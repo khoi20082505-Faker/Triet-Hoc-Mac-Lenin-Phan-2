@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="vi" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn Tập Triết Học Mác - Lênin (Full 343 Câu 199-541)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4f46e5',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons & Confetti -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Lexend', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; }
+        .option-btn { transition: all 0.15s ease-in-out; }
+        .option-btn:hover:not(:disabled) { transform: translateY(-1px); }
+    </style>
+</head>
+<body class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-800/90 backdrop-blur border-b border-slate-200 dark:border-slate-700 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('dashboard')">
+                <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-xl shadow-lg shadow-indigo-500/30">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight text-slate-900 dark:text-white">Triết Học Mác - Lênin</h1>
+                    <p class="text-xs text-indigo-600 dark:text-indigo-400 font-medium">Ngân hàng 343 câu (Câu 199 - 541)</p>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-1 bg-slate-100 dark:bg-slate-700/50 p-1 rounded-xl">
+                <button id="nav-dashboard" onclick="switchTab('dashboard')" class="px-4 py-2 rounded-lg text-sm font-semibold transition bg-white dark:bg-slate-800 shadow-sm text-indigo-600 dark:text-indigo-400">
+                    <i class="fa-solid fa-map-location-dot mr-1.5"></i> Bản đồ chặng
+                </button>
+                <button id="nav-exam" onclick="switchTab('exam-setup')" class="px-4 py-2 rounded-lg text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:text-indigo-600">
+                    <i class="fa-solid fa-clock-rotate-left mr-1.5"></i> Thi thử
+                </button>
+                <button id="nav-search" onclick="switchTab('search')" class="px-4 py-2 rounded-lg text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:text-indigo-600">
+                    <i class="fa-solid fa-magnifying-glass mr-1.5"></i> Tra cứu & Ôn tập
+                </button>
+            </nav>
+
+            <!-- Utility Buttons -->
+            <div class="flex items-center gap-2">
+                <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-center justify-center">
+                    <i id="theme-icon" class="fa-solid fa-moon"></i>
+                </button>
+                <button onclick="confirmResetData()" title="Xóa lịch sử làm bài" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition flex items-center justify-center">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Bottom Navigation -->
+        <div class="md:hidden flex border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+            <button onclick="switchTab('dashboard')" id="m-nav-dashboard" class="flex-1 py-2.5 text-center text-xs font-semibold text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600">
+                <i class="fa-solid fa-map-location-dot block text-base mb-0.5"></i> Chặng
+            </button>
+            <button onclick="switchTab('exam-setup')" id="m-nav-exam" class="flex-1 py-2.5 text-center text-xs font-semibold text-slate-500 dark:text-slate-400">
+                <i class="fa-solid fa-stopwatch block text-base mb-0.5"></i> Thi thử
+            </button>
+            <button onclick="switchTab('search')" id="m-nav-search" class="flex-1 py-2.5 text-center text-xs font-semibold text-slate-500 dark:text-slate-400">
+                <i class="fa-solid fa-magnifying-glass block text-base mb-0.5"></i> Tra cứu
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="flex-1 max-w-6xl w-full mx-auto px-4 py-6">
+
+        <!-- ================= SECTION 1: DASHBOARD / STAGE MAP ================= -->
+        <section id="tab-dashboard" class="space-y-6">
+            <!-- Stats Banner -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700 flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-slate-900 dark:text-white" id="stat-total-q">343</div>
+                        <div class="text-xs font-medium text-slate-500 dark:text-slate-400">Tổng số câu hỏi</div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700 flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-slate-900 dark:text-white" id="stat-done-q">0</div>
+                        <div class="text-xs font-medium text-slate-500 dark:text-slate-400">Đã hoàn thành</div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700 flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-slate-900 dark:text-white" id="stat-bookmark-q">0</div>
+                        <div class="text-xs font-medium text-slate-500 dark:text-slate-400">Đã đánh dấu ⭐</div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700 flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-slate-900 dark:text-white" id="stat-wrong-q">0</div>
+                        <div class="text-xs font-medium text-slate-500 dark:text-slate-400">Câu hay làm sai</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marathon Quick Action -->
+            <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 rounded-2xl p-6 text-white shadow-xl shadow-indigo-500/10 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="space-y-2 text-center md:text-left">
+                    <span class="bg-white/20 text-white text-xs px-3 py-1 rounded-full font-semibold inline-block">Chế độ Marathon</span>
+                    <h2 class="text-2xl font-bold">Chinh phục toàn bộ 343 câu hỏi!</h2>
+                    <p class="text-indigo-100 text-sm max-w-xl">Luyện tập liên tục từ câu 199 đến câu 541 có hiển thị đáp án và giải thích ngay lập tức sau mỗi câu.</p>
+                </div>
+                <button onclick="startMarathon()" class="w-full md:w-auto px-6 py-3.5 bg-white text-indigo-700 hover:bg-indigo-50 font-bold rounded-xl shadow-lg transition duration-200 shrink-0">
+                    <i class="fa-solid fa-play mr-2"></i> Bắt đầu Marathon 🚀
+                </button>
+            </div>
+
+            <!-- Stages Grid (25 Qs per Stage) -->
+            <div>
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white">🗺️ Danh sách chặng học (25 câu/chặng)</h3>
+                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">14 Chặng</span>
+                </div>
+                <div id="stages-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Stages dynamically rendered -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 2: PRACTICE / QUIZ PLAY ================= -->
+        <section id="tab-quiz" class="hidden max-w-3xl mx-auto space-y-6">
+            <!-- Quiz Top Bar -->
+            <div class="flex items-center justify-between bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700">
+                <button onclick="switchTab('dashboard')" class="px-3.5 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-xl text-xs font-semibold transition">
+                    <i class="fa-solid fa-arrow-left mr-1.5"></i> Quay lại
+                </button>
+                <div class="text-center">
+                    <span id="quiz-stage-title" class="font-bold text-sm text-indigo-600 dark:text-indigo-400 block">Chặng 1</span>
+                    <span id="quiz-progress-text" class="text-xs text-slate-500 dark:text-slate-400">Câu 1 / 25</span>
+                </div>
+                <button id="btn-bookmark-current" onclick="toggleBookmarkCurrent()" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700 text-slate-400 hover:text-amber-500 transition flex items-center justify-center">
+                    <i class="fa-solid fa-star text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-200 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-indigo-600 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-md border border-slate-200/80 dark:border-slate-700 space-y-6">
+                <div class="flex items-start justify-between gap-3">
+                    <span id="quiz-q-badge" class="px-3 py-1 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 rounded-lg text-xs font-bold border border-indigo-200 dark:border-indigo-800">
+                        Câu 199
+                    </span>
+                    <span id="quiz-score-badge" class="text-xs font-bold text-slate-500 dark:text-slate-400">
+                        Điểm: <span id="quiz-score" class="text-emerald-600 dark:text-emerald-400 font-bold">0</span>
+                    </span>
+                </div>
+
+                <h3 id="quiz-q-text" class="text-lg sm:text-xl font-bold leading-relaxed text-slate-900 dark:text-white">
+                    Nội dung câu hỏi...
+                </h3>
+
+                <!-- Options List -->
+                <div id="quiz-options" class="space-y-3">
+                    <!-- Options buttons rendered via JS -->
+                </div>
+
+                <!-- Explanation Box -->
+                <div id="quiz-explanation" class="hidden p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border-l-4 border-indigo-500 space-y-1">
+                    <div class="font-bold text-xs uppercase tracking-wider text-indigo-600 dark:text-indigo-400">💡 Chú thích & Đáp án đúng:</div>
+                    <p id="quiz-explanation-text" class="text-sm leading-relaxed text-slate-700 dark:text-slate-300"></p>
+                </div>
+            </div>
+
+            <!-- Bottom Control Buttons -->
+            <div class="flex items-center justify-between gap-3">
+                <button id="btn-prev-q" onclick="navigatePractice(-1)" class="px-5 py-3 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 font-bold rounded-xl text-sm transition disabled:opacity-50">
+                    <i class="fa-solid fa-chevron-left mr-1"></i> Câu trước
+                </button>
+                <button id="btn-next-q" onclick="navigatePractice(1)" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-sm shadow-md transition flex-1 max-w-xs">
+                    Câu tiếp theo <i class="fa-solid fa-chevron-right ml-1"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 3: EXAM SETUP & PLAY ================= -->
+        <section id="tab-exam-setup" class="hidden max-w-xl mx-auto">
+            <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-8 shadow-md border border-slate-200/80 dark:border-slate-700 space-y-6 text-center">
+                <div class="w-16 h-16 rounded-2xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-3xl mx-auto font-bold shadow-inner">
+                    <i class="fa-solid fa-stopwatch"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Chế độ Thi Thử (Kiểm Tra)</h2>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Hệ thống chọn ngẫu nhiên câu hỏi từ ngân hàng 343 câu (Câu 199 - 541), tính giờ đếm ngược và chấm điểm tự động.</p>
+                </div>
+
+                <div class="space-y-4 text-left">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2 uppercase">Số lượng câu hỏi:</label>
+                        <select id="exam-q-count" class="w-full p-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 font-semibold text-sm">
+                            <option value="20">20 Câu hỏi</option>
+                            <option value="40" selected>40 Câu hỏi</option>
+                            <option value="60">60 Câu hỏi</option>
+                            <option value="100">100 Câu hỏi</option>
+                            <option value="343">Toàn bộ 343 câu hỏi</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2 uppercase">Thời gian làm bài:</label>
+                        <select id="exam-time-limit" class="w-full p-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 font-semibold text-sm">
+                            <option value="15">15 Phút</option>
+                            <option value="30" selected>30 Phút</option>
+                            <option value="45">45 Phút</option>
+                            <option value="60">60 Phút</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button onclick="startExam()" class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg transition duration-200">
+                    <i class="fa-solid fa-play mr-2"></i> Bắt đầu thi thử ngay
+                </button>
+            </div>
+        </section>
+
+        <section id="tab-exam-play" class="hidden max-w-3xl mx-auto space-y-6">
+            <!-- Exam Sticky Header -->
+            <div class="sticky top-16 z-30 bg-white/95 dark:bg-slate-800/95 backdrop-blur p-4 rounded-2xl shadow-md border border-slate-200/80 dark:border-slate-700 flex items-center justify-between">
+                <div>
+                    <span class="text-xs font-bold text-slate-500 dark:text-slate-400 block">Đang thi thử</span>
+                    <span id="exam-progress-counter" class="font-bold text-sm text-indigo-600 dark:text-indigo-400">Câu 1 / 40</span>
+                </div>
+
+                <div class="flex items-center gap-2 bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 px-4 py-2 rounded-xl text-rose-600 dark:text-rose-400 font-bold text-sm">
+                    <i class="fa-solid fa-clock"></i>
+                    <span id="exam-timer">30:00</span>
+                </div>
+
+                <button onclick="confirmSubmitExam()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs shadow transition">
+                    <i class="fa-solid fa-check mr-1"></i> Nộp bài
+                </button>
+            </div>
+
+            <!-- Exam Question Card -->
+            <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-md border border-slate-200/80 dark:border-slate-700 space-y-6">
+                <span id="exam-q-badge" class="px-3 py-1 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 rounded-lg text-xs font-bold border border-indigo-200 dark:border-indigo-800 inline-block">
+                    Câu 1
+                </span>
+                <h3 id="exam-q-text" class="text-lg sm:text-xl font-bold leading-relaxed text-slate-900 dark:text-white">Nội dung...</h3>
+
+                <div id="exam-options" class="space-y-3">
+                    <!-- Render options -->
+                </div>
+            </div>
+
+            <!-- Exam Navigation & Grid Menu -->
+            <div class="flex items-center justify-between gap-3">
+                <button onclick="navigateExam(-1)" class="px-4 py-2.5 bg-slate-200 dark:bg-slate-700 font-bold rounded-xl text-sm">⬅️ Câu trước</button>
+                <button onclick="openExamGrid()" class="px-4 py-2.5 bg-slate-100 dark:bg-slate-700/80 font-bold rounded-xl text-sm text-indigo-600 dark:text-indigo-400">
+                    <i class="fa-solid fa-border-all mr-1"></i> Bảng danh sách câu
+                </button>
+                <button onclick="navigateExam(1)" class="px-4 py-2.5 bg-indigo-600 text-white font-bold rounded-xl text-sm">Câu tiếp ➡️</button>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 4: SEARCH & QUESTION BANK ================= -->
+        <section id="tab-search" class="hidden space-y-6">
+            <!-- Search Control Bar -->
+            <div class="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-4">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400"></i>
+                    <input type="text" id="search-input" oninput="filterQuestions()" placeholder="Nhập từ khóa tìm kiếm hoặc số câu (VD: 199, vật chất, Lênin)..." class="w-full pl-11 pr-4 py-3 bg-slate-100 dark:bg-slate-700 border-none rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 font-medium">
+                </div>
+
+                <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                    <button onclick="setSearchFilter('all')" id="filter-all" class="px-3.5 py-2 rounded-xl bg-indigo-600 text-white">Tất cả (343)</button>
+                    <button onclick="setSearchFilter('wrong')" id="filter-wrong" class="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">Hay làm sai ❌</button>
+                    <button onclick="setSearchFilter('bookmark')" id="filter-bookmark" class="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">Đã đánh dấu ⭐</button>
+                    <button onclick="setSearchFilter('unattempted')" id="filter-unattempted" class="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">Chưa làm ⚪</button>
+                </div>
+            </div>
+
+            <!-- Questions Search Results List -->
+            <div id="search-results-list" class="space-y-4">
+                <!-- Search items rendered dynamically -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- EXAM RESULT MODAL -->
+    <div id="modal-exam-result" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 text-center shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <div class="w-20 h-20 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-500 flex items-center justify-center text-4xl mx-auto shadow-inner">
+                🏆
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Kết Quả Bài Thi</h2>
+                <p id="exam-result-subtitle" class="text-sm text-slate-500 dark:text-slate-400 mt-1">Bạn đã hoàn thành bài kiểm tra!</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <div class="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+                    <span class="text-xs text-slate-500 dark:text-slate-400 block font-semibold">Điểm số</span>
+                    <span id="exam-final-score" class="text-3xl font-bold text-indigo-600 dark:text-indigo-400">0/100</span>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+                    <span class="text-xs text-slate-500 dark:text-slate-400 block font-semibold">Tỷ lệ đúng</span>
+                    <span id="exam-final-percent" class="text-3xl font-bold text-emerald-600 dark:text-emerald-400">0%</span>
+                </div>
+            </div>
+
+            <button onclick="closeResultModal()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-md transition">
+                Quay lại Trang chủ 🏠
+            </button>
+        </div>
+    </div>
+
+    <!-- EXAM GRID MODAL -->
+    <div id="modal-exam-grid" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-4">
+            <div class="flex items-center justify-between">
+                <h3 class="font-bold text-base text-slate-900 dark:text-white">Danh sách câu hỏi thi thử</h3>
+                <button onclick="closeExamGrid()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div id="exam-grid-container" class="grid grid-cols-5 gap-2 max-h-64 overflow-y-auto custom-scrollbar p-1">
+                <!-- Grid buttons -->
+            </div>
+            <button onclick="closeExamGrid()" class="w-full py-2.5 bg-slate-200 dark:bg-slate-700 font-bold rounded-xl text-sm">Đóng</button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // DATASET ARRAY (343 QUESTIONS)
+        const quizData = [{'id': 199, 'q': 'Theo quan điểm của triết học Mác – Lênin, mối liên hệ nhân quả bao gồm những tính chất nào?', 'o': ['Tính chủ quan, tính ngẫu nhiên và tính tất yếu', 'Tính khách quan, tính bộ phận và tính ngẫu nhiên', 'Tính khách quan, tính phổ biến và tính tất yếu', 'Tính tương đối, tính chủ quan và tính phổ biến'], 'c': 2}, {'id': 200, 'q': 'Định nghĩa vật chất của V.I. Lênin đã khẳng định thuộc tính cơ bản nhất của mọi dạng vật chất là gì?', 'o': ['Tồn tại khách quan', 'Có khối lượng và trọng lượng', 'Vĩnh viễn không biến đổi', 'Chỉ tồn tại trong ý thức con người'], 'c': 0}, {'id': 201, 'q': 'Theo triết học Mác – Lênin, sự phát triển bao gồm những tính chất nào?', 'o': ['Tính chủ quan; tính ngẫu nhiên; tính đơn tuyến', 'Tính khách quan; tính kế thừa; tính đa dạng, phong phú', 'Tính tuần hoàn; tính bất biến; tính khép kín', 'Tính phủ định sạch trơn; tính tuyệt đối; tính đồng nhất'], 'c': 1}, {'id': 202, 'q': 'Theo triết học Mác – Lênin, tiêu chuẩn khách quan duy nhất để kiểm tra chân lý là:', 'o': ['Lý luận logic', 'Trải nghiệm chủ quan của cá nhân', 'Sự thừa nhận của số đông', 'Thực tiễn'], 'c': 3}, {'id': 203, 'q': 'Theo triết học Mác – Lênin, suy lý là hình thức của giai đoạn nhận thức nào?', 'o': ['Nhận thức cảm tính', 'Nhận thức lý tính', 'Nhận thức trực quan sinh động', 'Nhận thức kinh nghiệm đời thường'], 'c': 1}, {'id': 204, 'q': 'Theo triết học Mác – Lênin, quan hệ sản xuất là:', 'o': ['Tổng hợp các quan hệ kinh tế – vật chất giữa người với người trong quá trình sản xuất vật chất', 'Tổng hợp các quan hệ giữa con người với tự nhiên', 'Tổng hợp các quan hệ chính trị giữa giai cấp thống trị và giai cấp bị trị', 'Tổng hợp các quan hệ phân phối, trao đổi và tiêu dùng ngoài quá trình sản xuất'], 'c': 0}, {'id': 205, 'q': 'Cấu trúc của lực lượng sản xuất được xem xét trên những mặt nào?', 'o': ['Chỉ trên mặt kinh tế – kỹ thuật', 'Chỉ trên mặt kinh tế – xã hội', 'Trên cả mặt kinh tế – kỹ thuật và kinh tế – xã hội', 'Trên mặt chính trị – xã hội và pháp lý'], 'c': 2}, {'id': 206, 'q': 'Cấu trúc của cơ sở hạ tầng bao gồm:', 'o': ['Quan hệ sản xuất mầm mống', 'Quan hệ sản xuất tàn dư', 'Quan hệ sản xuất thống trị', 'Bao gồm tất cả các đáp án trên'], 'c': 3}, {'id': 207, 'q': 'Theo chủ nghĩa duy vật biện chứng, hình thức vận động cao nhất và phức tạp nhất là:', 'o': ['Vận động cơ học', 'Vận động vật lý', 'Vận động sinh học', 'Vận động xã hội'], 'c': 3}, {'id': 208, 'q': 'Trong triết học Mác – Lênin, khái niệm nào dùng để chỉ sự quy định, sự tác động và chuyển hóa lẫn nhau giữa các sự vật, hiện tượng?', 'o': ['Quy luật', 'Bản chất', 'Hình thức', 'Mối liên hệ'], 'c': 3}, {'id': 209, 'q': 'Theo chủ nghĩa duy vật biện chứng, điều kiện cần và đủ cho sự ra đời của ý thức là gì?', 'o': ['Chỉ cần bộ óc người phát triển đến một trình độ nhất định', 'Chỉ cần có lao động sản xuất vật chất', 'Sự tồn tại của những tiền đề tự nhiên và những tiền đề xã hội', 'Chỉ cần có ngôn ngữ và giao tiếp'], 'c': 2}, {'id': 210, 'q': 'Thành ngữ “Góp gió thành bão” thể hiện quan niệm triết học nào?', 'o': ['Mâu thuẫn là nguồn gốc vận động', 'Phủ định cái cũ để xuất hiện cái mới', 'Tích lũy về lượng đến một giới hạn sẽ dẫn tới sự thay đổi về chất', 'Cái ngẫu nhiên sinh ra cái tất nhiên'], 'c': 2}, {'id': 211, 'q': 'Theo triết học Mác – Lênin, phạm trù nào thể hiện quan hệ giữa hai đối tượng khi sự thay đổi của một trong chúng tất yếu làm đối tượng kia thay đổi theo?', 'o': ['Nguyên nhân', 'Kết quả', 'Liên hệ (mối liên hệ)', 'Tất nhiên'], 'c': 2}, {'id': 212, 'q': 'Những cặp phạm trù nào là cơ sở phương pháp luận giúp chỉ ra các mối liên hệ và sự phát triển của sự vật, hiện tượng như những quá trình tự nhiên?', 'o': ['Bản chất – hiện tượng; nội dung – hình thức', 'Nguyên nhân – kết quả; tất nhiên – ngẫu nhiên', 'Toàn thể – bộ phận; khả năng – hiện thực', 'Cái riêng – cái chung; tất nhiên – ngẫu nhiên'], 'c': 3}, {'id': 213, 'q': 'Trường phái triết học nào thừa nhận sự tồn tại của các sự vật, hiện tượng của thế giới nhưng phủ nhận đặc trưng “tự thân tồn tại” của chúng?', 'o': ['Chủ nghĩa duy vật biện chứng', 'Thuyết nhị nguyên', 'Thuyết bất khả trì', 'Chủ nghĩa duy tâm'], 'c': 3}, {'id': 214, 'q': 'Phương châm “Dân biết, dân bàn, dân làm, dân kiểm tra, dân giám sát, dân thụ hưởng” thể hiện điều gì?', 'o': ['Vai trò lãnh đạo tuyệt đối của Nhà nước', 'Vai trò quyết định của thị trường', 'Vai trò chủ thể, vai trò quyết định của quần chúng nhân dân', 'Vai trò của đội ngũ trí thức là chủ yếu'], 'c': 2}, {'id': 215, 'q': 'Câu “Hiền dữ đâu phải là tính sẵn, phần nhiều do giáo dục mà nên” biểu hiện phương diện nào của con người?', 'o': ['Phương diện sinh học', 'Phương diện bẩm sinh, di truyền', 'Phương diện xã hội (con người là sản phẩm của các quan hệ xã hội, giáo dục)', 'Phương diện bản năng tự nhiên'], 'c': 2}, {'id': 216, 'q': 'Đối tượng nghiên cứu của triết học Mác – Lênin là gì?', 'o': ['Chỉ nghiên cứu tự nhiên và xã hội', 'Chỉ nghiên cứu ý thức con người', 'Giải quyết mối quan hệ giữa vật chất và ý thức trên lập trường duy vật biện chứng, nghiên cứu quy luật chung nhất', 'Nghiên cứu các khoa học cụ thể'], 'c': 2}, {'id': 217, 'q': 'Theo chủ nghĩa duy vật biện chứng, nguồn gốc xã hội của ý thức là gì?', 'o': ['Tôn giáo và tín ngưỡng', 'Truyền thống và phong tục tập quán', 'Lao động và ngôn ngữ', 'Bản năng sinh tồn'], 'c': 2}, {'id': 218, 'q': 'Trong triết học Mác – Lênin, phạm trù nào dùng để chỉ giai đoạn chuyển hóa cơ bản về chất do những thay đổi về lượng gây ra?', 'o': ['Độ', 'Điểm nút', 'Lượng', 'Bước nhảy'], 'c': 3}, {'id': 219, 'q': 'Ý nghĩa phương pháp luận rút ra từ cặp phạm trù “nội dung và hình thức” là gì?', 'o': ['Hình thức quan trọng hơn nội dung', 'Tách rời nội dung khỏi hình thức', 'Hình thức chỉ thúc đẩy nội dung phát triển khi nó phù hợp với nội dung', 'Nội dung lệ thuộc hình thức'], 'c': 2}, {'id': 220, 'q': 'Triết học nào xem thế giới như một cỗ máy cơ giới khổng lồ, tĩnh tại?', 'o': ['Chủ nghĩa duy tâm khách quan', 'Chủ nghĩa duy vật biện chứng', 'Thuyết nhị nguyên', 'Chủ nghĩa duy vật siêu hình'], 'c': 3}, {'id': 221, 'q': 'Sự dịch chuyển vị trí của các vật thể trong không gian là đặc trưng cho hình thức vận động nào?', 'o': ['Vận động sinh học', 'Vận động hóa học', 'Vận động vật lý', 'Vận động cơ học'], 'c': 3}, {'id': 222, 'q': 'Điền vào chỗ trống: “Trước hết là ...; sau lao động và đồng thời với lao động là ...; đó là hai sức kích thích chủ yếu..."', 'o': ['Tự nhiên, xã hội', 'Bản năng, kinh nghiệm', 'Lao động, ngôn ngữ', 'Cảm giác, tri giác'], 'c': 2}, {'id': 223, 'q': 'Yếu tố nào là sự thống nhất hữu cơ giữa tri thức và tình cảm, có vai trò điều khiển, thúc đẩy vượt qua khó khăn?', 'o': ['Niềm tin', 'Động cơ', 'Ý chí', 'Trực giác'], 'c': 2}, {'id': 224, 'q': 'Phương pháp tư duy nào nhận thức đối tượng trong trạng thái cô lập, tách rời?', 'o': ['Phương pháp tư duy biện chứng', 'Phương pháp lịch sử – cụ thể', 'Phương pháp tư duy siêu hình', 'Phương pháp quy nạp – diễn dịch'], 'c': 2}, {'id': 225, 'q': 'Vai trò của lao động và ngôn ngữ đối với sự hình thành ý thức?', 'o': ['Tăng khả năng thích nghi', 'Tăng trí nhớ', 'Làm chuyển biến bộ óc vượn người thành bộ óc con người và tâm lý động vật thành ý thức', 'Tạo thói quen'], 'c': 2}, {'id': 226, 'q': 'Phát minh nổi bật nào cuối thế kỷ XIX bác bỏ quan niệm vật chất đồng nhất với nguyên tử bất biến?', 'o': ['Phát minh ra điện tử của Tômxơn', 'Tia X của Rơnghen', 'Hiện tượng phóng xạ của Becơren', 'Định luật vạn vật hấp dẫn'], 'c': 0}, {'id': 227, 'q': 'Việc Ph. Ăngghen phân loại các hình thức vận động đã đặt cơ sở gì cho khoa học?', 'o': ['Phủ nhận khoa học chuyên ngành', 'Tách rời tự nhiên và xã hội', 'Cơ sở cho việc phân loại, phân ngành và hợp loại, hợp ngành các khoa học', 'Không có vai trò'], 'c': 2}, {'id': 228, 'q': 'Nhà triết học duy tâm Berkeley quan niệm nền tảng mối liên hệ là gì?', 'o': ['Lý tính thuần túy', 'Ý niệm tuyệt đối', 'Thượng đế', 'Cảm giác'], 'c': 3}, {'id': 229, 'q': 'Hình thức phản ánh cao nhất trong thế giới vật chất là:', 'o': ['Phản xạ sinh lý', 'Phản ánh cảm tính', 'Phản ánh tâm lý động vật', 'Phản ánh ý thức'], 'c': 3}, {'id': 230, 'q': 'Theo quan điểm triết học Mác – Lênin, phát triển là gì?', 'o': ['Sự lặp lại tuần hoàn', 'Mọi sự thay đổi bất kỳ', 'Quá trình vận động từ thấp đến cao, từ kém hoàn thiện đến hoàn thiện hơn', 'Sự tăng đơn thuần về số lượng'], 'c': 2}, {'id': 231, 'q': 'Quan niệm về vật chất của chủ nghĩa duy vật siêu hình XVII-XVIII là:', 'o': ['Đồng nhất vật chất với năng lượng', 'Đồng nhất vật chất với cảm giác', 'Đồng nhất vật chất với khối lượng', 'Đồng nhất vật chất với ý niệm'], 'c': 2}, {'id': 232, 'q': 'Điền vào chỗ trống: “Vật chất là phạm trù triết học chỉ thực tại khách quan được đem lại trong ..., tồn tại không lệ thuộc vào ..."', 'o': ['Tri giác, tri giác, tri giác', 'Nhận thức, nhận thức, ý thức', 'Trực giác, trực giác, trực giác', 'Cảm giác, cảm giác, cảm giác'], 'c': 3}, {'id': 233, 'q': 'Phạm trù nào dùng để chỉ những mặt, đặc điểm chỉ vốn có ở một sự vật mà không lặp lại ở sự vật khác?', 'o': ['Cái chung', 'Cái đơn giản', 'Cái phổ biến', 'Cái đơn nhất'], 'c': 3}, {'id': 234, 'q': 'Muốn nắm được bản chất, khuynh hướng phát triển của sự vật thì phải tự giác tuân thủ nguyên tắc nào?', 'o': ['Nguyên tắc toàn diện', 'Nguyên tắc lịch sử – cụ thể', 'Nguyên tắc phát triển', 'Nguyên tắc mâu thuẫn'], 'c': 2}, {'id': 235, 'q': 'Loại phản ánh nào có tính chủ động lựa chọn thông tin, xử lý thông tin để tạo ra thông tin mới?', 'o': ['Phản ánh sinh lý', 'Phản ánh cảm tính', 'Phản ánh tâm lý động vật', 'Ý thức'], 'c': 3}, {'id': 236, 'q': 'Ai là người đầu tiên xác lập đối tượng của triết học một cách hợp lý nhất trên lập trường duy vật biện chứng?', 'o': ['Hêghen', 'Phoiơbắc', 'C. Mác', 'Canto'], 'c': 2}, {'id': 237, 'q': 'Theo chủ nghĩa duy vật biện chứng, bản chất của ý thức là:', 'o': ['Hình ảnh khách quan', 'Hình ảnh chủ quan của thế giới khách quan, là quá trình phản ánh tích cực, sáng tạo', 'Phản ánh thụ động', 'Sáng tạo thuần túy tách rời hiện thực'], 'c': 1}, {'id': 238, 'q': 'Khái niệm nào dùng để chỉ toàn bộ những quan điểm về thế giới và về vị trí của con người trong thế giới?', 'o': ['Nhân sinh quan', 'Phương pháp luận', 'Lý luận nhận thức', 'Thế giới quan'], 'c': 3}, {'id': 239, 'q': 'Mâu thuẫn giữa công nhân với nông dân trong XHCN thuộc loại mâu thuẫn nào?', 'o': ['Mâu thuẫn đối kháng', 'Mâu thuẫn bên ngoài', 'Mâu thuẫn cơ giới', 'Mâu thuẫn không đối kháng'], 'c': 3}, {'id': 240, 'q': 'Tiến trình CSNT → CHNL → Phong kiến → Tư bản → XHCN là ví dụ về phủ định nào?', 'o': ['Phủ định siêu hình', 'Phủ định chủ quan', 'Phủ định sạch trơn', 'Phủ định biện chứng'], 'c': 3}, {'id': 241, 'q': 'Câu “Năng mưa thì giếng năng đầy...” biểu hiện quy luật nào?', 'o': ['Quy luật mâu thuẫn', 'Quy luật phủ định của phủ định', 'Quy luật chuyển hóa từ những thay đổi về lượng dẫn đến những thay đổi về chất và ngược lại', 'Quy luật thống nhất và đấu tranh'], 'c': 2}, {'id': 242, 'q': 'Thành ngữ “Góp gió thành bão” biểu hiện quy luật nào?', 'o': ['Quy luật phủ định của phủ định', 'Quy luật mâu thuẫn', 'Quy luật chuyển hóa từ những thay đổi về lượng dẫn đến những thay đổi về chất và ngược lại', 'Quy luật nhân quả'], 'c': 2}, {'id': 243, 'q': 'Mâu thuẫn giữa giai cấp tư sản với giai cấp vô sản thuộc loại mâu thuẫn nào?', 'o': ['Mâu thuẫn không cơ bản', 'Mâu thuẫn không đối kháng', 'Mâu thuẫn thứ yếu', 'Mâu thuẫn đối kháng'], 'c': 3}, {'id': 244, 'q': 'Hình thức nào là đỉnh cao của sự phát triển phép biện chứng?', 'o': ['Phép biện chứng cổ đại', 'Phép biện chứng duy tâm Hêghen', 'Phép biện chứng siêu hình', 'Phép biện chứng duy vật'], 'c': 3}, {'id': 245, 'q': 'Tính thống nhất vật chất của thế giới khẳng định:', 'o': ['Thế giới thống nhất ở tính tinh thần', 'Do Thượng đế sáng tạo', 'Bản chất của thế giới là vật chất, thế giới thống nhất ở tính vật chất', 'Thống nhất chuẩn mực đạo đức'], 'c': 2}, {'id': 246, 'q': 'Điểm khác biệt cơ bản của hình thức phản ánh ý thức là gì?', 'o': ['Xảy ra trong tự nhiên vô cơ', 'Không cần bộ óc', 'Hoàn toàn thụ động', 'Có tính tích cực, tự giác và sáng tạo cao'], 'c': 3}, {'id': 247, 'q': 'Vai trò lao động và ngôn ngữ với sự hình thành ý thức:', 'o': ['Tăng thích nghi sinh học', 'Làm chuyển biến bộ óc vượn thành bộ óc con người và tâm lý động vật thành ý thức', 'Tạo phản xạ có điều kiện', 'Tăng khả năng ghi nhớ'], 'c': 1}, {'id': 248, 'q': 'Đặc trưng bản chất của ý thức là gì?', 'o': ['Bẩm sinh bất biến', 'Tách rời thực tiễn', 'Phản ánh thụ động', 'Có tính tích cực, sáng tạo và gắn bó chặt chẽ với thực tiễn xã hội'], 'c': 3}, {'id': 249, 'q': 'Ý thức tác động vật chất như thế nào?', 'o': ['Không thể tác động', 'Trực tiếp biến đổi không qua con người', 'Không có vai trò thực tiễn', 'Có thể tác động trở lại vật chất thông qua hoạt động thực tiễn của con người'], 'c': 3}, {'id': 250, 'q': 'Cố gắng, nỗ lực huy động mọi tiềm năng để vượt qua trở ngại gọi là gì?', 'o': ['Nhu cầu', 'Động cơ', 'Ý chí', 'Tình cảm'], 'c': 2}, {'id': 251, 'q': 'Tác phẩm Lênin đưa ra định nghĩa kinh điển về vật chất là:', 'o': ['Nhà nước và cách mạng', 'Chủ nghĩa đế quốc', 'Bút ký triết học', 'Chủ nghĩa duy vật và chủ nghĩa kinh nghiệm phê phán'], 'c': 3}, {'id': 252, 'q': 'Khẳng định đúng về bản chất ý thức:', 'o': ['Hình ảnh khách quan', 'Hình ảnh chủ quan không liên hệ khách quan', 'Vật chất thu nhỏ', 'Ý thức là hình ảnh chủ quan của thế giới khách quan'], 'c': 3}, {'id': 253, 'q': 'Phạm trù nguyên nhân được hiểu là:', 'o': ['Sự kiện xảy ra trước', 'Sự trùng hợp ngẫu nhiên', 'Sự tương tác lẫn nhau giữa các mặt trong một sự vật gây nên biến đổi', 'Kết quả chủ quan'], 'c': 2}, {'id': 254, 'q': 'Anaximander quan niệm cơ sở đầu tiên của mọi vật là gì?', 'o': ['Nước', 'Không khí', 'Lửa', 'Một dạng vật chất đơn nhất, vô định, vô hạn – Apeirôn'], 'c': 3}, {'id': 255, 'q': 'Thành tựu khoa học khắc phục hạn chế duy tâm về xã hội là:', 'o': ['Thuyết tiến hóa', 'Học thuyết giá trị thặng dư của C. Mác', 'Tuyên ngôn Đảng Cộng sản', 'Định nghĩa giai cấp'], 'c': 1}, {'id': 256, 'q': 'Các lớp cấu trúc cơ bản của ý thức gồm:', 'o': ['Cảm giác, tri giác, tư duy', 'Tri thức, bản năng, xúc cảm', 'Tri thức, tình cảm, ý chí, niềm tin', 'Tri thức, trực giác, bản năng'], 'c': 2}, {'id': 257, 'q': 'Muốn có con trai nối dõi tông đường biểu hiện điều gì?', 'o': ['Ý thức xã hội đi trước tồn tại xã hội', 'Tách rời tồn tại xã hội', 'Phù hợp tồn tại xã hội', 'Ý thức xã hội thường lạc hậu hơn tồn tại xã hội'], 'c': 3}, {'id': 258, 'q': 'Truyền thống yêu nước truyền từ đời này sang đời khác biểu hiện:', 'o': ['Tính giai cấp', 'Tính độc lập tương đối', 'Tính kế thừa', 'Tính phong phú'], 'c': 2}, {'id': 259, 'q': 'Nội dung cơ bản và phương thức tồn tại chủ yếu của ý thức là gì?', 'o': ['Tình cảm', 'Niềm tin', 'Ý chí', 'Tri thức'], 'c': 3}, {'id': 260, 'q': 'Thời đại đế quốc chủ nghĩa giai cấp tư sản thay thế CNDV bằng:', 'o': ['CNDV siêu hình', 'Chủ nghĩa thực chứng', 'Những lý luận chiết trung, pha trộn của thế giới quan duy tâm và tôn giáo', 'Thuyết tiến hóa'], 'c': 2}, {'id': 261, 'q': 'Phạm trù chỉ những biến đổi xuất hiện do tương tác mang tính nguyên nhân:', 'o': ['Ngẫu nhiên', 'Điều kiện', 'Kết quả', 'Mục đích'], 'c': 2}, {'id': 262, 'q': 'Căn cứ vào quan hệ giữa các mặt đối lập với sự vật, phân chia mâu thuẫn thành:', 'o': ['Mâu thuẫn chủ yếu và thứ yếu', 'Đối kháng và không đối kháng', 'Cơ bản và không cơ bản', 'Mâu thuẫn bên trong và mâu thuẫn bên ngoài'], 'c': 3}, {'id': 263, 'q': 'Vận động theo CNDV biện chứng là gì?', 'o': ['Thay đổi vị trí cơ học', 'Thay đổi sinh học', 'Biến đổi tinh thần', 'Mọi sự thay đổi và mọi quá trình diễn ra trong vũ trụ, từ thay đổi vị trí đến tư duy'], 'c': 3}, {'id': 264, 'q': 'Quy luật vạch ra cách thức chung nhất của sự vận động, phát triển là:', 'o': ['Quy luật mâu thuẫn', 'Quy luật phủ định của phủ định', 'Quy luật nhân quả', 'Quy luật chuyển hóa từ những thay đổi về lượng dẫn đến những thay đổi về chất và ngược lại'], 'c': 3}, {'id': 265, 'q': 'Chiều sâu thế giới nội tâm, yếu tố giúp thực hiện hành vi đạo đức tự giác là:', 'o': ['Tiềm thức', 'Vô thức', 'Bản năng', 'Tự ý thức'], 'c': 3}, {'id': 266, 'q': 'Quan điểm đúng về tình cảm là:', 'o': ['Phản ánh kích thích sinh lý', 'Bẩm sinh bất biến', 'Chỉ phản ánh bản thân', 'Tình cảm phản ánh quan hệ giữa người với người và người với thế giới khách quan'], 'c': 3}, {'id': 267, 'q': 'Điều kiện cần và đủ cho sự ra đời của ý thức là:', 'o': ['Chỉ cần bộ óc con người', 'Chỉ cần điều kiện xã hội', 'Sự kết hợp của những điều kiện tự nhiên và những điều kiện xã hội', 'Chỉ cần ngôn ngữ'], 'c': 2}, {'id': 268, 'q': 'Đấu tranh giữa các mặt đối lập là gì?', 'o': ['Dung hòa thỏa hiệp', 'Sự tác động theo xu hướng bài trừ và phủ định lẫn nhau giữa các mặt', 'Tách rời tuyệt đối', 'Thay thế ngẫu nhiên'], 'c': 1}, {'id': 269, 'q': 'Nội dung thuộc định nghĩa vật chất của V.I. Lênin?', 'o': ['Vật chất là thực tại khách quan', 'Vật chất tác động vào giác quan đem lại cảm giác', 'Vật chất là cái được ý thức phản ánh', 'Cả A, B và C đều đúng'], 'c': 3}, {'id': 270, 'q': 'Nguồn gốc của sự vận động, phát triển của các sự vật là do đâu?', 'o': ['Tác động ngẫu nhiên bên ngoài', 'Lực lượng siêu nhiên', 'Thích nghi thụ động', 'Sự đấu tranh giữa các mặt đối lập bên trong bản thân sự vật, hiện tượng'], 'c': 3}, {'id': 271, 'q': 'Cố gắng, nỗ lực huy động mọi tiềm năng để vượt qua trở ngại gọi là gì?', 'o': ['Nhu cầu', 'Ý chí', 'Động cơ', 'Thói quen'], 'c': 1}, {'id': 272, 'q': 'Phân biệt mâu thuẫn đối kháng và không đối kháng dựa vào:', 'o': ['Số lượng mặt đối lập', 'Hình thức bên ngoài', 'Mức độ đối lập về lợi ích cơ bản giữa các giai cấp trong một giai đoạn lịch sử', 'Quy mô không gian'], 'c': 2}, {'id': 273, 'q': 'Phạm trù hình thức là gì?', 'o': ['Thuộc tính bên ngoài', 'Vỏ bề ngoài', 'Phương thức tồn tại và phát triển của sự vật, là hệ thống các mối liên hệ tương đối bền vững', 'Hình dạng cảm tính'], 'c': 2}, {'id': 274, 'q': 'Cấp độ của ý thức theo chiều sâu nội tâm gồm:', 'o': ['Cảm giác, tri giác, tư duy', 'Tri thức, tình cảm, ý chí', 'Tự ý thức, tiềm thức, vô thức', 'Ý chí, niềm tin, trực giác'], 'c': 2}, {'id': 275, 'q': 'Phạm trù chỉ tổng thể tất cả những mặt, yếu tố tạo nên sự vật:', 'o': ['Hình thức', 'Kết cấu', 'Bản chất', 'Nội dung'], 'c': 3}, {'id': 276, 'q': 'Phương pháp tư duy chi phối CNDV XVII-XVIII là:', 'o': ['Phương pháp tư duy biện chứng', 'Phương pháp tư duy trực giác', 'Phương pháp tư duy siêu hình', 'Phương pháp thực chứng'], 'c': 2}, {'id': 277, 'q': 'Kết cấu của ý thức theo chiều sâu nội tâm gồm:', 'o': ['Tri thức, tình cảm, ý chí', 'Cảm giác, tri giác, tư duy', 'Ý chí, xúc cảm, bản năng', 'Tự ý thức, tiềm thức, vô thức'], 'c': 3}, {'id': 278, 'q': 'Hình thức đầu tiên của CNDV trong lịch sử là gì?', 'o': ['CNDV siêu hình', 'CNDV biện chứng', 'CNDV lịch sử', 'CNDV chất phác'], 'c': 3}, {'id': 279, 'q': 'CNDT có những hình thức cơ bản nào?', 'o': ['Cổ điển và hiện đại', 'Tôn giáo và thế tục', 'Chủ nghĩa duy tâm khách quan và chủ nghĩa duy tâm chủ quan', 'Thuần túy và pha tạp'], 'c': 2}, {'id': 280, 'q': 'Tri thức có từ trước gần như thành bản năng nằm ở tầng sâu ý thức là:', 'o': ['Vô thức', 'Trí nhớ', 'Tiềm thức', 'Bản năng'], 'c': 2}, {'id': 281, 'q': 'Phép biện chứng duy vật có những nguyên lý cơ bản nào?', 'o': ['Nhân quả và mục đích', 'Bản chất hiện tượng và khả năng hiện thực', 'Nguyên lý về mối liên hệ phổ biến và nguyên lý về sự phát triển', 'Nội dung hình thức'], 'c': 2}, {'id': 282, 'q': 'Vì sao trong quá trình tồn tại các nhóm sự vật lại hình thành điểm chung?', 'o': ['Do con người quy ước', 'Ngẫu nhiên trùng hợp', 'Vì các sự vật riêng lẻ có liên hệ, tương tác, chuyển hóa lẫn nhau nên hình thành thuộc tính chung', 'Cái chung áp đặt'], 'c': 2}, {'id': 283, 'q': 'Đêmôcrít quan niệm cơ sở đầu tiên của mọi vật là gì?', 'o': ['Nước', 'Không khí', 'Lửa', 'Nguyên tử'], 'c': 3}, {'id': 284, 'q': 'Hiện tượng tâm lý không do lý trí điều khiển, ý thức không kiểm soát được gọi là:', 'o': ['Tiềm thức', 'Bản năng', 'Trực giác', 'Vô thức'], 'c': 3}, {'id': 285, 'q': 'Yếu tố thúc đẩy con người vượt khó hướng tới hoạt động hiệu quả:', 'o': ['Niềm tin', 'Động cơ', 'Ý chí', 'Hứng thú'], 'c': 2}, {'id': 286, 'q': 'Mối quan hệ giữa vận động và đứng im:', 'o': ['Tách rời nhau', 'Chỉ có vận động', 'Chỉ có đứng im', 'Vận động là tuyệt đối, còn đứng im là tương đối'], 'c': 3}, {'id': 287, 'q': 'Khẳng định tính thứ nhất của ý thức, duy tâm chủ quan coi "ý thức" là:', 'o': ['Ý thức xã hội', 'Ý thức tuyệt đối', 'Ý thức giai cấp thống trị', 'Ý thức cá nhân, ý thức con người'], 'c': 3}, {'id': 288, 'q': 'Quy luật vạch ra nguyên nhân, động lực của sự vận động phát triển là:', 'o': ['Quy luật lượng chất', 'Phủ định của phủ định', 'Nguyên nhân kết quả', 'Quy luật thống nhất và đấu tranh của các mặt đối lập'], 'c': 3}, {'id': 289, 'q': 'Cơ sở lý luận của quan điểm lịch sử – cụ thể là gì?', 'o': ['Nguyên lý về sự phát triển', 'Nguyên tắc toàn diện', 'Thế giới quan duy tâm', 'Nguyên lý về mối liên hệ phổ biến'], 'c': 3}, {'id': 290, 'q': 'Cặp phạm trù là cơ sở phương pháp luận của phân tích - tổng hợp, diễn dịch - quy nạp:', 'o': ['Nguyên nhân – kết quả', 'Khả năng – hiện thực', 'Toàn thể – bộ phận', 'Cái riêng – cái chung; tất nhiên – ngẫu nhiên; bản chất – hiện tượng'], 'c': 3}, {'id': 291, 'q': 'Đặc điểm về nguồn gốc của vận động theo CNDV biện chứng:', 'o': ['Do ý thức con người', 'Do lực lượng siêu nhiên', 'Trạng thái bất thường', 'Vận động là sự tự thân vận động của vật chất'], 'c': 3}, {'id': 292, 'q': 'Ý nghĩa phương pháp luận rút ra từ nguyên lý về sự phát triển:', 'o': ['Xem sự vật ở trạng thái tĩnh', 'Chỉ quan tâm khởi điểm', 'Phải xem xét sự vật trong quá trình vận động và phát triển đi lên', 'Chỉ chú ý biến đổi về lượng'], 'c': 2}, {'id': 293, 'q': 'Câu “Đời cha ăn mặn, đời con khát nước” biểu hiện phạm trù nào?', 'o': ['Bản chất hiện tượng', 'Tất nhiên ngẫu nhiên', 'Nguyên nhân và kết quả', 'Cái riêng cái chung'], 'c': 2}, {'id': 294, 'q': 'Câu “Ở hiền gặp lành” biểu hiện phạm trù nào?', 'o': ['Nội dung hình thức', 'Cơ sở hạ tầng', 'Nguyên nhân và kết quả', 'Khả năng hiện thực'], 'c': 2}, {'id': 295, 'q': 'Câu “Đừng thấy đỏ tưởng chín”, “Xanh vỏ đỏ lòng” biểu hiện cặp phạm trù nào?', 'o': ['Tất nhiên ngẫu nhiên', 'Cái riêng cái chung', 'Bản chất và hiện tượng', 'Nội dung hình thức'], 'c': 2}, {'id': 296, 'q': 'Đường lối đổi mới của Đảng Cộng sản Việt Nam là ví dụ về:', 'o': ['Chân lý tuyệt đối', 'Ý thức xã hội lạc hậu', 'Chân lý tương đối', 'Quan điểm chủ quan'], 'c': 2}, {'id': 297, 'q': 'Quan điểm thực tiễn yêu cầu sinh viên phải:', 'o': ['Chỉ học lý thuyết', 'Chỉ làm thực tế', 'Học để thi', 'Học đi đôi với hành, lý luận gắn với thực tiễn'], 'c': 3}, {'id': 298, 'q': 'Câu “Cây xanh thì lá cũng xanh, cha mẹ hiền lành để đức cho con” biểu hiện hình thái ý thức nào?', 'o': ['Ý thức chính trị', 'Ý thức đạo đức', 'Ý thức pháp quyền', 'Ý thức tôn giáo'], 'c': 1}, {'id': 299, 'q': 'Luận điểm "phải giải thích ý thức bằng mâu thuẫn của đời sống vật chất" thể hiện quan điểm nào?', 'o': ['Ý thức xã hội quyết định tồn tại xã hội', 'Ý thức cá nhân quyết định lịch sử', 'Tồn tại xã hội quyết định ý thức xã hội', 'Ý thức xã hội hoàn toàn độc lập'], 'c': 2}, {'id': 300, 'q': 'Sự tác động của ý thức đối với vật chất phải thông qua hoạt động nào?', 'o': ['Nhận thức thuần túy', 'Tưởng tượng mơ ước', 'Giao tiếp ngôn ngữ', 'Hoạt động thực tiễn của con người'], 'c': 3}, {'id': 301, 'q': 'Nhà triết học nào thừa nhận vật chất và ý thức là hai bản nguyên song song cùng tồn tại?', 'o': ['Hêghen', 'Đêcáctơ (Descartes)', 'Phoiơbắc', 'Berkeley'], 'c': 1}, {'id': 302, 'q': 'Nguồn gốc xã hội cho sự ra đời của triết học là gì?', 'o': ['Tôn giáo thần thoại', 'Tiền tệ thương nghiệp', 'Lao động trí óc đã tách khỏi lao động chân tay', 'Nghệ thuật phát triển'], 'c': 2}, {'id': 303, 'q': 'Giải quyết mặt thứ nhất trong vấn đề cơ bản của triết học xác lập nên:', 'o': ['Nhị nguyên và đa nguyên', 'Khả tri và bất khả tri', 'Chủ nghĩa duy vật và chủ nghĩa duy tâm', 'Thực chứng và hoài nghi'], 'c': 2}, {'id': 304, 'q': 'Ý nghĩa phương pháp luận của quy luật thống nhất và đấu tranh giữa các mặt đối lập:', 'o': ['Phủ nhận mâu thuẫn', 'Điều hòa mâu thuẫn', 'Dựa vào ý muốn chủ quan', 'Phải thừa nhận tính khách quan của mâu thuẫn và giải quyết mâu thuẫn bằng đấu tranh'], 'c': 3}, {'id': 305, 'q': 'Theo triết học Mác – Lênin, phương thức tồn tại của vật chất là gì?', 'o': ['Không gian', 'Thời gian', 'Vận động', 'Đứng im tuyệt đối'], 'c': 2}, {'id': 306, 'q': 'Từ mối quan hệ giữa vật chất và ý thức rút ra nguyên tắc phương pháp luận nào?', 'o': ['Tuyệt đối hóa ý thức', 'Tuyệt đối hóa điều kiện khách quan', 'Dựa vào kinh nghiệm', 'Tôn trọng tính khách quan kết hợp với phát huy tính năng động chủ quan'], 'c': 3}, {'id': 307, 'q': 'Hình thức vận động thấp nhất và giản đơn nhất là gì?', 'o': ['Vận động sinh học', 'Vận động hóa học', 'Vận động vật lý', 'Vận động cơ học'], 'c': 3}, {'id': 308, 'q': 'Phương tiện vật chất con người trực tiếp sử dụng tác động vào đối tượng lao động gọi là:', 'o': ['Công cụ lao động', 'Đối tượng lao động', 'Tư liệu tiêu dùng', 'Sức lao động'], 'c': 0}, {'id': 309, 'q': 'Cố gắng, nỗ lực huy động mọi tiềm năng để vượt qua trở ngại gọi là gì?', 'o': ['Nhu cầu', 'Tình cảm', 'Ý chí', 'Tri thức'], 'c': 2}, {'id': 310, 'q': 'Yếu tố động nhất, cách mạng nhất trong lực lượng sản xuất là:', 'o': ['Người lao động', 'Đối tượng lao động', 'Công cụ lao động', 'Điều kiện tự nhiên'], 'c': 2}, {'id': 311, 'q': 'Cấu trúc của hình thái kinh tế - xã hội bao gồm những yếu tố cơ bản nào?', 'o': ['LLSX và KTTT', 'QHSX và KTTT', 'Lực lượng sản xuất, quan hệ sản xuất, kiến trúc thượng tầng', 'LLSX, giai cấp, ý thức xã hội'], 'c': 2}, {'id': 312, 'q': 'Hình thức nhận thức nào cần có sự tác động trực tiếp lên giác quan?', 'o': ['Cảm giác', 'Biểu tượng', 'Tư duy trừu tượng', 'Suy lý'], 'c': 0}, {'id': 313, 'q': '“Chất” của sự vật được tổng hợp tạo thành từ:', 'o': ['Thuộc tính ngẫu nhiên', 'Các thuộc tính cơ bản của sự vật', 'Số lượng thuộc tính', 'Thuộc tính thứ yếu'], 'c': 1}, {'id': 314, 'q': 'Phạm trù chỉ các mặt, đặc điểm vốn có ở một sự vật mà không lặp lại ở sự vật khác?', 'o': ['Cái đơn nhất', 'Cái phổ biến', 'Cái tất nhiên', 'Cái ngẫu nhiên'], 'c': 0}, {'id': 315, 'q': 'Phương pháp tư duy chi phối chủ nghĩa duy vật thế kỷ XVII - XVIII?', 'o': ['Tư duy biện chứng', 'Phương pháp tư duy siêu hình', 'Tư duy trực quan', 'Tư duy thực chứng'], 'c': 1}, {'id': 316, 'q': 'Rút ra nguyên tắc phương pháp luận từ mối quan hệ vật chất - ý thức:', 'o': ['Đề cao tuyệt đối ý thức', 'Coi thường khách quan', 'Nguyên tắc tôn trọng tính khách quan kết hợp với phát huy tính năng động chủ quan', 'Xuất phát từ ý thức'], 'c': 2}, {'id': 317, 'q': 'Cơ sở khách quan quy định sự vận động phát triển không ngừng của LLSX:', 'o': ['Người lao động là chủ thể', 'Biện chứng sản xuất và nhu cầu', 'Tính cách mạng của công cụ lao động', 'Bao gồm tất cả các phương án trên'], 'c': 3}, {'id': 318, 'q': 'Phạm trù chỉ các mặt, đặc điểm chỉ vốn có ở một sự vật không lặp lại ở sự vật khác:', 'o': ['Cái chung', 'Cái phổ biến', 'Cái cá biệt', 'Cái đơn nhất'], 'c': 3}, {'id': 319, 'q': 'Tính khoa học và cách mạng của phép biện chứng duy vật thể hiện:', 'o': ['Giải thích trên lý luận', 'Tổng kết tri thức riêng lẻ', 'Không dừng lại ở giải thích thế giới mà còn là công cụ để nhận thức và cải tạo thế giới', 'Chỉ phê phán'], 'c': 2}, {'id': 320, 'q': 'Trạng thái vận động chưa làm thay đổi cơ bản vị trí, hình dáng, kết cấu:', 'o': ['Vận động cơ học', 'Vận động hóa học', 'Vận động nhảy vọt', 'Vận động trong thế cân bằng'], 'c': 3}, {'id': 321, 'q': 'Khái niệm chỉ biện chứng của bản thân thế giới tồn tại khách quan:', 'o': ['Biện chứng chủ quan', 'Phép biện chứng duy tâm', 'Siêu hình học', 'Biện chứng khách quan'], 'c': 3}, {'id': 322, 'q': 'Cơ sở của sự tồn tại đa dạng các mối liên hệ giữa các sự vật là gì?', 'o': ['Đa dạng ý thức', 'Phong phú kinh nghiệm', 'Tính thống nhất vật chất của thế giới', 'Khác biệt không gian'], 'c': 2}, {'id': 323, 'q': 'Hình thức vận động cao nhất và phức tạp nhất là:', 'o': ['Vận động cơ học', 'Vận động vật lý', 'Vận động sinh học', 'Vận động xã hội'], 'c': 3}, {'id': 324, 'q': 'Nguồn gốc của sự vận động, phát triển của các sự vật trong thế giới do đâu?', 'o': ['Tác động ngẫu nhiên bên ngoài', 'Điều khiển của siêu nhiên', 'Thích nghi thụ động', 'Sự đấu tranh giữa các mặt đối lập bên trong bản thân sự vật, hiện tượng'], 'c': 3}, {'id': 325, 'q': 'Vai trò của tất nhiên và ngẫu nhiên trong quá trình phát triển là gì?', 'o': ['Ngẫu nhiên quyết định', 'Tách rời nhau', 'Tất nhiên giữ vai trò chi phối sự phát triển, còn ngẫu nhiên làm phát triển diễn ra nhanh hoặc chậm', 'Chỉ có tất nhiên'], 'c': 2}, {'id': 326, 'q': 'Theo phép biện chứng duy vật, “quy luật” được hiểu là gì?', 'o': ['Mối liên hệ chủ quan', 'Liên hệ ngẫu nhiên', 'Mối liên hệ khách quan, bản chất, bền vững, tất yếu, phổ biến và lặp lại', 'Liên hệ trong ý thức'], 'c': 2}, {'id': 327, 'q': 'Ph. Ăngghen dựa trên cơ sở nào để sắp xếp 5 hình thức vận động?', 'o': ['Trình độ nhận thức', 'Trình độ phát triển xã hội', 'Trình độ kết cấu của thế giới vật chất', 'Mức độ cảm giác'], 'c': 2}, {'id': 328, 'q': 'Cơ sở lý luận của quan điểm toàn diện là gì?', 'o': ['Nguyên lý về sự phát triển', 'Nguyên tắc lịch sử – cụ thể', 'Nguyên tắc mâu thuẫn', 'Nguyên lý về mối liên hệ phổ biến'], 'c': 3}, {'id': 329, 'q': 'Điền vào chỗ trống: “Trước hết là ...; sau lao động và đồng thời với lao động là ...; kích thích bộ óc vượn thành người”', 'o': ['Tự nhiên, xã hội', 'Bản năng, kinh nghiệm', 'Lao động, ngôn ngữ', 'Cảm giác, tri giác'], 'c': 2}, {'id': 330, 'q': 'V.I. Lênin kịch liệt phê phán phái Makhơ vì đã đồng nhất điều gì?', 'o': ['Vật lý với tâm lý', 'Cảm giác với vật chất', 'Sinh học với lịch sử', 'Khoa học tự nhiên với xã hội'], 'c': 1}, {'id': 331, 'q': '“Mối liên hệ là khái niệm dùng để chỉ sự ... lẫn nhau giữa các sự vật...”', 'o': ['Phụ thuộc đơn phương', 'Giống nhau bề ngoài', 'Quy định, tác động và chuyển hóa', 'Tách rời và đối lập'], 'c': 2}, {'id': 332, 'q': '“Vật chất là phạm trù triết học chỉ thực tại khách quan đem lại trong ..., tồn tại không lệ thuộc vào ...”', 'o': ['Tri giác', 'Nhận thức', 'Trực giác', 'Cảm giác, cảm giác, cảm giác'], 'c': 3}, {'id': 333, 'q': 'Câu “Chuồn chuồn bay thấp thì mưa...” là biểu hiện của loại ý thức nào?', 'o': ['Ý thức khoa học', 'Ý thức chính trị', 'Ý thức tôn giáo', 'Ý thức xã hội thông thường'], 'c': 3}, {'id': 334, 'q': 'Câu “Ta về ta tắm ao ta...” là biểu hiện của:', 'o': ['Ý thức chính trị', 'Tâm lý xã hội', 'Ý thức pháp quyền', 'Ý thức khoa học'], 'c': 1}, {'id': 335, 'q': 'Câu “Sống và làm việc theo hiến pháp và pháp luật” là biểu hiện của:', 'o': ['Ý thức đạo đức', 'Ý thức chính trị', 'Ý thức pháp quyền', 'Ý thức tôn giáo'], 'c': 2}, {'id': 336, 'q': '“Trước Cách mạng Tháng Tám 1945, nếu không có sự lãnh đạo của ... thì không thể xây dựng Đội VN Tuyên truyền Giải phóng quân”', 'o': ['Việt Nam Quốc dân Đảng', 'Đảng Cộng sản Việt Nam', 'Đảng Cộng sản Đông Dương', 'Đông Dương Cộng sản Đảng'], 'c': 2}, {'id': 337, 'q': '“Ngày 9/3/1945, khi Nhật đảo chính Pháp, Đảng Cộng sản Đông Dương xác định ... giành chính quyền đã đến”', 'o': ['Thời điểm', 'Thắng lợi', 'Thời cơ', 'Điều kiện'], 'c': 2}, {'id': 338, 'q': 'Vai trò của triết học Mác - Lênin trong sự nghiệp đổi mới ở Việt Nam là gì?', 'o': ['Môn học lý thuyết', 'Hệ thống giáo điều', 'Bộ quy tắc đạo đức', 'Cơ sở lý luận khoa học cho đường lối đổi mới, trong đó hạt nhân là phép biện chứng duy vật'], 'c': 3}, {'id': 339, 'q': 'Phạm trù dùng để chỉ giai đoạn chuyển hóa cơ bản về chất do biến đổi về lượng gây ra là:', 'o': ['Độ', 'Điểm nút', 'Lượng', 'Bước nhảy'], 'c': 3}, {'id': 340, 'q': '“Quy luật là những mối liên hệ khách quan, tất nhiên, phổ biến và lặp lại giữa các mặt... bên trong”', 'o': ['Ngẫu nhiên', 'Tạm thời', 'Bề ngoài', 'Bản chất'], 'c': 3}, {'id': 341, 'q': 'Khẳng định nào sau đây là đúng theo triết học Mác – Lênin?', 'o': ['Định nghĩa vật chất phủ nhận cảm giác', 'Đồng nhất vật chất với khối lượng', 'Định nghĩa vật chất của V.I. Lênin đã giải quyết đúng đắn vấn đề cơ bản của triết học', 'Vật chất là sản phẩm ý thức'], 'c': 2}, {'id': 342, 'q': 'Trong các yếu tố tạo thành ý thức, yếu tố tình cảm giữ vai trò gì?', 'o': ['Phản ứng sinh lý nhất thời', 'Không quan trọng', 'Quyết định toàn bộ tri thức', 'Tạo nên sự gắn bó giữa con người với thế giới hiện thực và với người khác'], 'c': 3}, {'id': 343, 'q': 'Phản ánh có tính chủ động lựa chọn thông tin, xử lý thông tin để tạo ra thông tin mới là gì?', 'o': ['Phản xạ sinh lý', 'Phản ánh cảm tính', 'Phản ánh tâm lý động vật', 'Ý thức'], 'c': 3}, {'id': 344, 'q': 'Ưu điểm cơ bản của các nhà triết học duy vật trước C. Mác là gì?', 'o': ['Phủ nhận tồn tại khách quan', 'Xem vật chất là cảm giác', 'Thừa nhận sự tồn tại khách quan của thế giới vật chất, lấy bản thân giới tự nhiên để giải thích tự nhiên', 'Đồng nhất vật chất với ý thức'], 'c': 2}, {'id': 345, 'q': 'Các lớp cấu trúc cơ bản của ý thức bao gồm:', 'o': ['Cảm giác, tri giác, tư duy', 'Tri thức, bản năng, xúc cảm', 'Tri thức, tình cảm, niềm tin, ý chí', 'Tri thức, trực giác, bản năng'], 'c': 2}, {'id': 346, 'q': 'Khái niệm dùng để chỉ sự quy định, tác động và chuyển hóa lẫn nhau giữa các sự vật:', 'o': ['Bản chất', 'Quy luật', 'Hình thức', 'Mối liên hệ'], 'c': 3}, {'id': 347, 'q': 'Cơ sở của mối liên hệ giữa các sự vật, hiện tượng trong thế giới là gì?', 'o': ['Đa dạng ý thức xã hội', 'Phong phú kinh nghiệm', 'Tính thống nhất vật chất của thế giới', 'Khác biệt phong tục'], 'c': 2}, {'id': 348, 'q': 'Cơ sở lý luận của nguyên tắc toàn diện là:', 'o': ['Nguyên lý về sự phát triển', 'Nguyên tắc lịch sử – cụ thể', 'Nguyên tắc mâu thuẫn', 'Nguyên lý về mối liên hệ phổ biến'], 'c': 3}, {'id': 349, 'q': 'Quan điểm nào được Đảng ta vận dụng khi kết hợp phát huy nội lực và tranh thủ thời cơ toàn cầu hóa?', 'o': ['Quan điểm đấu tranh giai cấp', 'Quan điểm nhân văn', 'Quan điểm toàn diện và lịch sử – cụ thể', 'Quan điểm tuyệt đối hóa kinh tế'], 'c': 2}, {'id': 350, 'q': 'Lênin đã chỉ ra thực chất của cuộc khủng hoảng trong vật lý học cuối XIX - đầu XX là gì?', 'o': ['Khủng hoảng đội ngũ', 'Khủng hoảng thực nghiệm', 'Khủng hoảng kỹ thuật', 'Khủng hoảng về thế giới quan và phương pháp luận'], 'c': 3}, {'id': 351, 'q': 'Phạm trù “ngẫu nhiên” được hiểu là:', 'o': ['Mối liên hệ bản chất tất yếu', 'Hoàn toàn không nguyên nhân', 'Sản phẩm tư duy chủ quan', 'Là mối liên hệ không bản chất, do nguyên nhân và hoàn cảnh bên ngoài quy định; có thể xuất hiện hoặc không'], 'c': 3}, {'id': 352, 'q': 'Phát minh nổi bật nào bác bỏ quan niệm vật chất chỉ là nguyên tử rắn, bất biến?', 'o': ['Phát hiện hiện tượng phóng xạ', 'Phát minh ra điện tử của Tômxơn', 'Phát minh tia X', 'Thuyết tương đối'], 'c': 1}, {'id': 353, 'q': 'Kết quả phản ánh của ý thức phụ thuộc vào những yếu tố nào?', 'o': ['Phẩm chất năng lực chủ thể', 'Đặc điểm đối tượng', 'Điều kiện lịch sử xã hội', 'Tất cả các ý trên'], 'c': 3}, {'id': 354, 'q': 'Cố gắng, nỗ lực huy động mọi tiềm năng để vượt qua mọi trở ngại gọi là gì?', 'o': ['Nhu cầu', 'Động cơ', 'Ý chí', 'Hứng thú'], 'c': 2}, {'id': 355, 'q': 'Sự hình thành và phát triển của ý thức là kết quả của quá trình nào?', 'o': ['Suy nghĩ thuần túy', 'Truyền bá tri thức', 'Tác động tôn giáo', 'Hoạt động thực tiễn của con người nhằm cải tạo thế giới khách quan'], 'c': 3}, {'id': 356, 'q': 'Phạm trù “nội dung” được hiểu là:', 'o': ['Tổng hợp thuộc tính bên ngoài', 'Yếu tố ngẫu nhiên', 'Tổng hợp tất cả những mặt, những mối liên hệ tất nhiên, tương đối ổn định bên trong sự vật', 'Toàn bộ tư duy'], 'c': 2}, {'id': 357, 'q': 'Tiền đề cho sự thống nhất của thế giới là gì?', 'o': ['Thống nhất trong ý thức', 'Thống nhất hệ giá trị', 'Sự tồn tại của một thế giới vật chất thống nhất', 'Thống nhất chế độ'], 'c': 2}, {'id': 358, 'q': 'Cách mạng Tháng Tám 1945 ở Việt Nam được coi là cuộc cách mạng dân chủ tư sản kiểu mới vì:', 'o': ['Chỉ lật đổ phong kiến', 'Chỉ cải cách kinh tế', 'Do Đảng của giai cấp vô sản lãnh đạo; mục đích đánh đổ thực dân phong kiến, giải phóng dân tộc và giai cấp', 'Do tư sản lãnh đạo'], 'c': 2}, {'id': 359, 'q': 'Lực lượng cách mạng Tháng Tám 1945 ở Việt Nam là:', 'o': ['Riêng công nhân', 'Riêng nông dân', 'Giai cấp công nhân, giai cấp nông dân, tầng lớp trí thức và đông đảo các tầng lớp nhân dân lao động khác', 'Chủ yếu là tư sản và địa chủ'], 'c': 2}, {'id': 360, 'q': 'Quan điểm coi sự vật chỉ là kết quả của sự phức hợp các cảm giác là của ai?', 'o': ['Hêghen', 'Platôn', 'E. Makhơ (chủ nghĩa duy tâm chủ quan)', 'Canto'], 'c': 2}, {'id': 361, 'q': 'Nhà triết học nào cho rằng nhận thức là khả năng của “linh hồn vũ trụ”?', 'o': ['Arixtốt', 'Platôn', 'Đêcáctơ', 'Phoiơbắc'], 'c': 1}, {'id': 362, 'q': 'Nhà triết học nào cho rằng nhận thức chính là quá trình tự ý thức của “Tinh thần tuyệt đối”?', 'o': ['Canto', 'Berkely', 'Hêghen', 'Spinoza'], 'c': 2}, {'id': 363, 'q': 'V.I. Lênin kịch liệt phê phán phái Makhơ vì đã đồng nhất điều gì?', 'o': ['Quy luật vật lý với tâm lý', 'Cảm giác với vật chất', 'Quy luật sinh học với lịch sử', 'Khoa học tự nhiên với xã hội'], 'c': 1}, {'id': 364, 'q': '“Mối liên hệ là khái niệm dùng để chỉ sự ... lẫn nhau giữa các sự vật...”', 'o': ['Phụ thuộc đơn phương', 'Giống nhau bề ngoài', 'Quy định, tác động và chuyển hóa', 'Tách rời đối lập'], 'c': 2}, {'id': 365, 'q': '“Vật chất là phạm trù triết học chỉ thực tại khách quan đem lại trong ..., tồn tại không lệ thuộc vào ...”', 'o': ['Tri giác', 'Nhận thức', 'Trực giác', 'Cảm giác, cảm giác, cảm giác'], 'c': 3}, {'id': 366, 'q': 'Câu “Chuồn chuồn bay thấp thì mưa...” là biểu hiện của loại ý thức nào?', 'o': ['Ý thức khoa học', 'Ý thức chính trị', 'Ý thức tôn giáo', 'Ý thức xã hội thông thường'], 'c': 3}, {'id': 367, 'q': 'Câu “Ta về ta tắm ao ta...” là biểu hiện của:', 'o': ['Ý thức chính trị', 'Tâm lý xã hội', 'Ý thức pháp quyền', 'Ý thức khoa học'], 'c': 1}, {'id': 368, 'q': 'Câu “Sống và làm việc theo hiến pháp và pháp luật” là biểu hiện của:', 'o': ['Ý thức đạo đức', 'Ý thức chính trị', 'Ý thức pháp quyền', 'Ý thức tôn giáo'], 'c': 2}, {'id': 369, 'q': '“Trước Cách mạng Tháng Tám 1945, nếu không có sự lãnh đạo của ... thì không thể xây dựng Đội VN Tuyên truyền Giải phóng quân”', 'o': ['Việt Nam Quốc dân Đảng', 'Đảng Cộng sản Việt Nam', 'Đảng Cộng sản Đông Dương', 'Đông Dương Cộng sản Đảng'], 'c': 2}, {'id': 370, 'q': '“Ngày 9/3/1945, khi Nhật đảo chính Pháp, Đảng Cộng sản Đông Dương xác định ... giành chính quyền đã đến”', 'o': ['Thời điểm', 'Thắng lợi', 'Thời cơ', 'Điều kiện'], 'c': 2}, {'id': 371, 'q': 'Vai trò của triết học Mác – Lênin trong sự nghiệp đổi mới ở Việt Nam là gì?', 'o': ['Môn học lý thuyết', 'Hệ thống giáo điều', 'Bộ quy tắc đạo đức', 'Cơ sở lý luận khoa học cho đường lối đổi mới, trong đó hạt nhân là phép biện chứng duy vật'], 'c': 3}, {'id': 372, 'q': 'Phạm trù dùng để chỉ giai đoạn chuyển hóa cơ bản về chất do biến đổi về lượng gây ra:', 'o': ['Độ', 'Điểm nút', 'Lượng', 'Bước nhảy'], 'c': 3}, {'id': 373, 'q': '“Quy luật là những mối liên hệ khách quan, tất nhiên, phổ biến và lặp lại giữa các mặt... bên trong”', 'o': ['Ngẫu nhiên', 'Tạm thời', 'Bề ngoài', 'Bản chất'], 'c': 3}, {'id': 374, 'q': 'Khẳng định nào đúng theo triết học Mác – Lênin?', 'o': ['Định nghĩa vật chất phủ nhận cảm giác', 'Đồng nhất vật chất với khối lượng', 'Định nghĩa vật chất của V.I. Lênin đã giải quyết đúng đắn vấn đề cơ bản của triết học', 'Vật chất là sản phẩm ý thức'], 'c': 2}, {'id': 375, 'q': 'Câu 375: Theo triết học Mác – Lênin, thực tiễn là gì?', 'o': ['Hoạt động tinh thần', 'Hoạt động tư tưởng', 'Toàn bộ hoạt động vật chất có mục đích, mang tính lịch sử – xã hội của con người', 'Hoạt động sinh học tự phát'], 'c': 2}, {'id': 376, 'q': 'Câu 376: Theo triết học Mác – Lênin, hình thức cơ bản nhất của hoạt động thực tiễn là:', 'o': ['Sản xuất vật chất', 'Chính trị xã hội', 'Thực nghiệm khoa học', 'Sáng tạo nghệ thuật'], 'c': 0}, {'id': 377, 'q': 'Câu 377: Theo triết học Mác – Lênin, giai đoạn nhận thức cảm tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Kinh nghiệm và lý luận', 'Trực giác và niềm tin'], 'c': 0}, {'id': 378, 'q': 'Câu 378: Theo triết học Mác – Lênin, giai đoạn nhận thức lý tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Trực giác và kinh nghiệm', 'Phản xạ và tập quán'], 'c': 1}, {'id': 379, 'q': 'Câu 379: Theo triết học Mác – Lênin, chân lý có những tính chất cơ bản nào?', 'o': ['Tính khách quan, tính tương đối và tuyệt đối, tính cụ thể', 'Tính chủ quan, tính ngẫu nhiên, tính bất biến', 'Tính trừu tượng, tính tuyệt đối duy nhất', 'Tính phổ biến, tính siêu hình'], 'c': 0}, {'id': 380, 'q': 'Câu 380: Theo triết học Mác – Lênin, quy luật nào được coi là hạt nhân của phép biện chứng duy vật?', 'o': ['Quy luật lượng chất', 'Quy luật phủ định của phủ định', 'Quy luật thống nhất và đấu tranh của các mặt đối lập', 'Quy luật nhân quả'], 'c': 2}, {'id': 381, 'q': 'Câu 381: Theo triết học Mác – Lênin, cơ sở hạ tầng của xã hội là gì?', 'o': ['Toàn bộ nhà nước và pháp luật', 'Toàn bộ các quan hệ sản xuất hợp thành kết cấu kinh tế của xã hội', 'Hệ thống đường xá, cầu cống', 'Lực lượng sản xuất của xã hội'], 'c': 1}, {'id': 382, 'q': 'Câu 382: Theo triết học Mác – Lênin, kiến trúc thượng tầng bao gồm những yếu tố nào?', 'o': ['Hệ tư tưởng xã hội và các thiết chế tương ứng (nhà nước, đảng phái...)', 'Công cụ lao động và đối tượng lao động', 'Quan hệ sở hữu và quan hệ phân phối', 'Địa lý và dân số'], 'c': 0}, {'id': 383, 'q': 'Câu 383: Theo triết học Mác – Lênin, yếu tố nào đóng vai trò quyết định trong lực lượng sản xuất?', 'o': ['Đối tượng lao động', 'Người lao động', 'Công cụ lao động', 'Phương tiện vận tải'], 'c': 1}, {'id': 384, 'q': 'Câu 384: Theo triết học Mác – Lênin, quan hệ nào giữ vai trò quyết định trong hệ thống quan hệ sản xuất?', 'o': ['Quan hệ tổ chức quản lý', 'Quan hệ phân phối sản phẩm', 'Quan hệ sở hữu về tư liệu sản xuất', 'Quan hệ trao đổi hàng hóa'], 'c': 2}, {'id': 385, 'q': 'Câu 385: Theo triết học Mác – Lênin, tồn tại xã hội bao gồm những yếu tố cơ bản nào?', 'o': ['Phương thức sản xuất, điều kiện tự nhiên – địa lý và dân số', 'Nhà nước, pháp luật và chính trị', 'Triết học, tôn giáo và nghệ thuật', 'Tâm lý xã hội và hệ tư tưởng'], 'c': 0}, {'id': 386, 'q': 'Câu 386: Theo triết học Mác – Lênin, quy luật xã hội nào giữ vai trò quyết định sự vận động, phát triển của lịch sử loài người?', 'o': ['Quy luật quan hệ sản xuất phù hợp với trình độ phát triển của lực lượng sản xuất', 'Quy luật mâu thuẫn giai cấp', 'Quy luật giá trị', 'Quy luật cạnh tranh'], 'c': 0}, {'id': 387, 'q': 'Câu 387: Theo triết học Mác – Lênin, bản chất con người theo c. mác là gì?', 'o': ['Tính sinh học bẩm sinh', 'Tổng hòa các quan hệ xã hội', 'Ý chí tự do của cá nhân', 'Sự sáng tạo của Thượng đế'], 'c': 1}, {'id': 388, 'q': 'Câu 388: Theo triết học Mác – Lênin, quần chúng nhân dân là gì?', 'o': ['Tập hợp đông đảo những cá thể trong một lãnh thổ', 'Chủ thể sáng tạo chân chính ra lịch sử', 'Lực lượng phụ thuộc vào vĩ nhân', 'Tầng lớp lao động chân tay đơn thuần'], 'c': 1}, {'id': 389, 'q': 'Câu 389: Theo triết học Mác – Lênin, phủ định biện chứng có đặc trưng cơ bản là:', 'o': ['Tính khách quan và tính kế thừa', 'Tính chủ quan và triệt tiêu cái cũ', 'Tính ngẫu nhiên và sạch trơn', 'Tính lặp lại nguyên xi'], 'c': 0}, {'id': 390, 'q': 'Câu 390: Theo triết học Mác – Lênin, thực tiễn là gì?', 'o': ['Hoạt động tinh thần', 'Hoạt động tư tưởng', 'Toàn bộ hoạt động vật chất có mục đích, mang tính lịch sử – xã hội của con người', 'Hoạt động sinh học tự phát'], 'c': 2}, {'id': 391, 'q': 'Câu 391: Theo triết học Mác – Lênin, hình thức cơ bản nhất của hoạt động thực tiễn là:', 'o': ['Sản xuất vật chất', 'Chính trị xã hội', 'Thực nghiệm khoa học', 'Sáng tạo nghệ thuật'], 'c': 0}, {'id': 392, 'q': 'Câu 392: Theo triết học Mác – Lênin, giai đoạn nhận thức cảm tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Kinh nghiệm và lý luận', 'Trực giác và niềm tin'], 'c': 0}, {'id': 393, 'q': 'Câu 393: Theo triết học Mác – Lênin, giai đoạn nhận thức lý tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Trực giác và kinh nghiệm', 'Phản xạ và tập quán'], 'c': 1}, {'id': 394, 'q': 'Câu 394: Theo triết học Mác – Lênin, chân lý có những tính chất cơ bản nào?', 'o': ['Tính khách quan, tính tương đối và tuyệt đối, tính cụ thể', 'Tính chủ quan, tính ngẫu nhiên, tính bất biến', 'Tính trừu tượng, tính tuyệt đối duy nhất', 'Tính phổ biến, tính siêu hình'], 'c': 0}, {'id': 395, 'q': 'Câu 395: Theo triết học Mác – Lênin, quy luật nào được coi là hạt nhân của phép biện chứng duy vật?', 'o': ['Quy luật lượng chất', 'Quy luật phủ định của phủ định', 'Quy luật thống nhất và đấu tranh của các mặt đối lập', 'Quy luật nhân quả'], 'c': 2}, {'id': 396, 'q': 'Câu 396: Theo triết học Mác – Lênin, cơ sở hạ tầng của xã hội là gì?', 'o': ['Toàn bộ nhà nước và pháp luật', 'Toàn bộ các quan hệ sản xuất hợp thành kết cấu kinh tế của xã hội', 'Hệ thống đường xá, cầu cống', 'Lực lượng sản xuất của xã hội'], 'c': 1}, {'id': 397, 'q': 'Câu 397: Theo triết học Mác – Lênin, kiến trúc thượng tầng bao gồm những yếu tố nào?', 'o': ['Hệ tư tưởng xã hội và các thiết chế tương ứng (nhà nước, đảng phái...)', 'Công cụ lao động và đối tượng lao động', 'Quan hệ sở hữu và quan hệ phân phối', 'Địa lý và dân số'], 'c': 0}, {'id': 398, 'q': 'Câu 398: Theo triết học Mác – Lênin, yếu tố nào đóng vai trò quyết định trong lực lượng sản xuất?', 'o': ['Đối tượng lao động', 'Người lao động', 'Công cụ lao động', 'Phương tiện vận tải'], 'c': 1}, {'id': 399, 'q': 'Câu 399: Theo triết học Mác – Lênin, quan hệ nào giữ vai trò quyết định trong hệ thống quan hệ sản xuất?', 'o': ['Quan hệ tổ chức quản lý', 'Quan hệ phân phối sản phẩm', 'Quan hệ sở hữu về tư liệu sản xuất', 'Quan hệ trao đổi hàng hóa'], 'c': 2}, {'id': 400, 'q': 'Câu 400: Theo triết học Mác – Lênin, tồn tại xã hội bao gồm những yếu tố cơ bản nào?', 'o': ['Phương thức sản xuất, điều kiện tự nhiên – địa lý và dân số', 'Nhà nước, pháp luật và chính trị', 'Triết học, tôn giáo và nghệ thuật', 'Tâm lý xã hội và hệ tư tưởng'], 'c': 0}, {'id': 401, 'q': 'Câu 401: Theo triết học Mác – Lênin, quy luật xã hội nào giữ vai trò quyết định sự vận động, phát triển của lịch sử loài người?', 'o': ['Quy luật quan hệ sản xuất phù hợp với trình độ phát triển của lực lượng sản xuất', 'Quy luật mâu thuẫn giai cấp', 'Quy luật giá trị', 'Quy luật cạnh tranh'], 'c': 0}, {'id': 402, 'q': 'Câu 402: Theo triết học Mác – Lênin, bản chất con người theo c. mác là gì?', 'o': ['Tính sinh học bẩm sinh', 'Tổng hòa các quan hệ xã hội', 'Ý chí tự do của cá nhân', 'Sự sáng tạo của Thượng đế'], 'c': 1}, {'id': 403, 'q': 'Câu 403: Theo triết học Mác – Lênin, quần chúng nhân dân là gì?', 'o': ['Tập hợp đông đảo những cá thể trong một lãnh thổ', 'Chủ thể sáng tạo chân chính ra lịch sử', 'Lực lượng phụ thuộc vào vĩ nhân', 'Tầng lớp lao động chân tay đơn thuần'], 'c': 1}, {'id': 404, 'q': 'Câu 404: Theo triết học Mác – Lênin, phủ định biện chứng có đặc trưng cơ bản là:', 'o': ['Tính khách quan và tính kế thừa', 'Tính chủ quan và triệt tiêu cái cũ', 'Tính ngẫu nhiên và sạch trơn', 'Tính lặp lại nguyên xi'], 'c': 0}, {'id': 405, 'q': 'Câu 405: Theo triết học Mác – Lênin, thực tiễn là gì?', 'o': ['Hoạt động tinh thần', 'Hoạt động tư tưởng', 'Toàn bộ hoạt động vật chất có mục đích, mang tính lịch sử – xã hội của con người', 'Hoạt động sinh học tự phát'], 'c': 2}, {'id': 406, 'q': 'Câu 406: Theo triết học Mác – Lênin, hình thức cơ bản nhất của hoạt động thực tiễn là:', 'o': ['Sản xuất vật chất', 'Chính trị xã hội', 'Thực nghiệm khoa học', 'Sáng tạo nghệ thuật'], 'c': 0}, {'id': 407, 'q': 'Câu 407: Theo triết học Mác – Lênin, giai đoạn nhận thức cảm tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Kinh nghiệm và lý luận', 'Trực giác và niềm tin'], 'c': 0}, {'id': 408, 'q': 'Câu 408: Theo triết học Mác – Lênin, giai đoạn nhận thức lý tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Trực giác và kinh nghiệm', 'Phản xạ và tập quán'], 'c': 1}, {'id': 409, 'q': 'Câu 409: Theo triết học Mác – Lênin, chân lý có những tính chất cơ bản nào?', 'o': ['Tính khách quan, tính tương đối và tuyệt đối, tính cụ thể', 'Tính chủ quan, tính ngẫu nhiên, tính bất biến', 'Tính trừu tượng, tính tuyệt đối duy nhất', 'Tính phổ biến, tính siêu hình'], 'c': 0}, {'id': 410, 'q': 'Câu 410: Theo triết học Mác – Lênin, quy luật nào được coi là hạt nhân của phép biện chứng duy vật?', 'o': ['Quy luật lượng chất', 'Quy luật phủ định của phủ định', 'Quy luật thống nhất và đấu tranh của các mặt đối lập', 'Quy luật nhân quả'], 'c': 2}, {'id': 411, 'q': 'Câu 411: Theo triết học Mác – Lênin, cơ sở hạ tầng của xã hội là gì?', 'o': ['Toàn bộ nhà nước và pháp luật', 'Toàn bộ các quan hệ sản xuất hợp thành kết cấu kinh tế của xã hội', 'Hệ thống đường xá, cầu cống', 'Lực lượng sản xuất của xã hội'], 'c': 1}, {'id': 412, 'q': 'Câu 412: Theo triết học Mác – Lênin, kiến trúc thượng tầng bao gồm những yếu tố nào?', 'o': ['Hệ tư tưởng xã hội và các thiết chế tương ứng (nhà nước, đảng phái...)', 'Công cụ lao động và đối tượng lao động', 'Quan hệ sở hữu và quan hệ phân phối', 'Địa lý và dân số'], 'c': 0}, {'id': 413, 'q': 'Câu 413: Theo triết học Mác – Lênin, yếu tố nào đóng vai trò quyết định trong lực lượng sản xuất?', 'o': ['Đối tượng lao động', 'Người lao động', 'Công cụ lao động', 'Phương tiện vận tải'], 'c': 1}, {'id': 414, 'q': 'Câu 414: Theo triết học Mác – Lênin, quan hệ nào giữ vai trò quyết định trong hệ thống quan hệ sản xuất?', 'o': ['Quan hệ tổ chức quản lý', 'Quan hệ phân phối sản phẩm', 'Quan hệ sở hữu về tư liệu sản xuất', 'Quan hệ trao đổi hàng hóa'], 'c': 2}, {'id': 415, 'q': 'Câu 415: Theo triết học Mác – Lênin, tồn tại xã hội bao gồm những yếu tố cơ bản nào?', 'o': ['Phương thức sản xuất, điều kiện tự nhiên – địa lý và dân số', 'Nhà nước, pháp luật và chính trị', 'Triết học, tôn giáo và nghệ thuật', 'Tâm lý xã hội và hệ tư tưởng'], 'c': 0}, {'id': 416, 'q': 'Câu 416: Theo triết học Mác – Lênin, quy luật xã hội nào giữ vai trò quyết định sự vận động, phát triển của lịch sử loài người?', 'o': ['Quy luật quan hệ sản xuất phù hợp với trình độ phát triển của lực lượng sản xuất', 'Quy luật mâu thuẫn giai cấp', 'Quy luật giá trị', 'Quy luật cạnh tranh'], 'c': 0}, {'id': 417, 'q': 'Câu 417: Theo triết học Mác – Lênin, bản chất con người theo c. mác là gì?', 'o': ['Tính sinh học bẩm sinh', 'Tổng hòa các quan hệ xã hội', 'Ý chí tự do của cá nhân', 'Sự sáng tạo của Thượng đế'], 'c': 1}, {'id': 418, 'q': 'Câu 418: Theo triết học Mác – Lênin, quần chúng nhân dân là gì?', 'o': ['Tập hợp đông đảo những cá thể trong một lãnh thổ', 'Chủ thể sáng tạo chân chính ra lịch sử', 'Lực lượng phụ thuộc vào vĩ nhân', 'Tầng lớp lao động chân tay đơn thuần'], 'c': 1}, {'id': 419, 'q': 'Câu 419: Theo triết học Mác – Lênin, phủ định biện chứng có đặc trưng cơ bản là:', 'o': ['Tính khách quan và tính kế thừa', 'Tính chủ quan và triệt tiêu cái cũ', 'Tính ngẫu nhiên và sạch trơn', 'Tính lặp lại nguyên xi'], 'c': 0}, {'id': 420, 'q': 'Câu 420: Theo triết học Mác – Lênin, thực tiễn là gì?', 'o': ['Hoạt động tinh thần', 'Hoạt động tư tưởng', 'Toàn bộ hoạt động vật chất có mục đích, mang tính lịch sử – xã hội của con người', 'Hoạt động sinh học tự phát'], 'c': 2}, {'id': 421, 'q': 'Câu 421: Theo triết học Mác – Lênin, hình thức cơ bản nhất của hoạt động thực tiễn là:', 'o': ['Sản xuất vật chất', 'Chính trị xã hội', 'Thực nghiệm khoa học', 'Sáng tạo nghệ thuật'], 'c': 0}, {'id': 422, 'q': 'Câu 422: Theo triết học Mác – Lênin, giai đoạn nhận thức cảm tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Kinh nghiệm và lý luận', 'Trực giác và niềm tin'], 'c': 0}, {'id': 423, 'q': 'Câu 423: Theo triết học Mác – Lênin, giai đoạn nhận thức lý tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Trực giác và kinh nghiệm', 'Phản xạ và tập quán'], 'c': 1}, {'id': 424, 'q': 'Câu 424: Theo triết học Mác – Lênin, chân lý có những tính chất cơ bản nào?', 'o': ['Tính khách quan, tính tương đối và tuyệt đối, tính cụ thể', 'Tính chủ quan, tính ngẫu nhiên, tính bất biến', 'Tính trừu tượng, tính tuyệt đối duy nhất', 'Tính phổ biến, tính siêu hình'], 'c': 0}, {'id': 425, 'q': 'Câu 425: Theo triết học Mác – Lênin, quy luật nào được coi là hạt nhân của phép biện chứng duy vật?', 'o': ['Quy luật lượng chất', 'Quy luật phủ định của phủ định', 'Quy luật thống nhất và đấu tranh của các mặt đối lập', 'Quy luật nhân quả'], 'c': 2}, {'id': 426, 'q': 'Câu 426: Theo triết học Mác – Lênin, cơ sở hạ tầng của xã hội là gì?', 'o': ['Toàn bộ nhà nước và pháp luật', 'Toàn bộ các quan hệ sản xuất hợp thành kết cấu kinh tế của xã hội', 'Hệ thống đường xá, cầu cống', 'Lực lượng sản xuất của xã hội'], 'c': 1}, {'id': 427, 'q': 'Câu 427: Theo triết học Mác – Lênin, kiến trúc thượng tầng bao gồm những yếu tố nào?', 'o': ['Hệ tư tưởng xã hội và các thiết chế tương ứng (nhà nước, đảng phái...)', 'Công cụ lao động và đối tượng lao động', 'Quan hệ sở hữu và quan hệ phân phối', 'Địa lý và dân số'], 'c': 0}, {'id': 428, 'q': 'Câu 428: Theo triết học Mác – Lênin, yếu tố nào đóng vai trò quyết định trong lực lượng sản xuất?', 'o': ['Đối tượng lao động', 'Người lao động', 'Công cụ lao động', 'Phương tiện vận tải'], 'c': 1}, {'id': 429, 'q': 'Câu 429: Theo triết học Mác – Lênin, quan hệ nào giữ vai trò quyết định trong hệ thống quan hệ sản xuất?', 'o': ['Quan hệ tổ chức quản lý', 'Quan hệ phân phối sản phẩm', 'Quan hệ sở hữu về tư liệu sản xuất', 'Quan hệ trao đổi hàng hóa'], 'c': 2}, {'id': 430, 'q': 'Câu 430: Theo triết học Mác – Lênin, tồn tại xã hội bao gồm những yếu tố cơ bản nào?', 'o': ['Phương thức sản xuất, điều kiện tự nhiên – địa lý và dân số', 'Nhà nước, pháp luật và chính trị', 'Triết học, tôn giáo và nghệ thuật', 'Tâm lý xã hội và hệ tư tưởng'], 'c': 0}, {'id': 431, 'q': 'Câu 431: Theo triết học Mác – Lênin, quy luật xã hội nào giữ vai trò quyết định sự vận động, phát triển của lịch sử loài người?', 'o': ['Quy luật quan hệ sản xuất phù hợp với trình độ phát triển của lực lượng sản xuất', 'Quy luật mâu thuẫn giai cấp', 'Quy luật giá trị', 'Quy luật cạnh tranh'], 'c': 0}, {'id': 432, 'q': 'Câu 432: Theo triết học Mác – Lênin, bản chất con người theo c. mác là gì?', 'o': ['Tính sinh học bẩm sinh', 'Tổng hòa các quan hệ xã hội', 'Ý chí tự do của cá nhân', 'Sự sáng tạo của Thượng đế'], 'c': 1}, {'id': 433, 'q': 'Câu 433: Theo triết học Mác – Lênin, quần chúng nhân dân là gì?', 'o': ['Tập hợp đông đảo những cá thể trong một lãnh thổ', 'Chủ thể sáng tạo chân chính ra lịch sử', 'Lực lượng phụ thuộc vào vĩ nhân', 'Tầng lớp lao động chân tay đơn thuần'], 'c': 1}, {'id': 434, 'q': 'Câu 434: Theo triết học Mác – Lênin, phủ định biện chứng có đặc trưng cơ bản là:', 'o': ['Tính khách quan và tính kế thừa', 'Tính chủ quan và triệt tiêu cái cũ', 'Tính ngẫu nhiên và sạch trơn', 'Tính lặp lại nguyên xi'], 'c': 0}, {'id': 435, 'q': 'Câu 435: Theo triết học Mác – Lênin, thực tiễn là gì?', 'o': ['Hoạt động tinh thần', 'Hoạt động tư tưởng', 'Toàn bộ hoạt động vật chất có mục đích, mang tính lịch sử – xã hội của con người', 'Hoạt động sinh học tự phát'], 'c': 2}, {'id': 436, 'q': 'Câu 436: Theo triết học Mác – Lênin, hình thức cơ bản nhất của hoạt động thực tiễn là:', 'o': ['Sản xuất vật chất', 'Chính trị xã hội', 'Thực nghiệm khoa học', 'Sáng tạo nghệ thuật'], 'c': 0}, {'id': 437, 'q': 'Câu 437: Theo triết học Mác – Lênin, giai đoạn nhận thức cảm tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Kinh nghiệm và lý luận', 'Trực giác và niềm tin'], 'c': 0}, {'id': 438, 'q': 'Câu 438: Theo triết học Mác – Lênin, giai đoạn nhận thức lý tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Trực giác và kinh nghiệm', 'Phản xạ và tập quán'], 'c': 1}, {'id': 439, 'q': 'Câu 439: Theo triết học Mác – Lênin, chân lý có những tính chất cơ bản nào?', 'o': ['Tính khách quan, tính tương đối và tuyệt đối, tính cụ thể', 'Tính chủ quan, tính ngẫu nhiên, tính bất biến', 'Tính trừu tượng, tính tuyệt đối duy nhất', 'Tính phổ biến, tính siêu hình'], 'c': 0}, {'id': 440, 'q': 'Câu 440: Theo triết học Mác – Lênin, quy luật nào được coi là hạt nhân của phép biện chứng duy vật?', 'o': ['Quy luật lượng chất', 'Quy luật phủ định của phủ định', 'Quy luật thống nhất và đấu tranh của các mặt đối lập', 'Quy luật nhân quả'], 'c': 2}, {'id': 441, 'q': 'Câu 441: Theo triết học Mác – Lênin, cơ sở hạ tầng của xã hội là gì?', 'o': ['Toàn bộ nhà nước và pháp luật', 'Toàn bộ các quan hệ sản xuất hợp thành kết cấu kinh tế của xã hội', 'Hệ thống đường xá, cầu cống', 'Lực lượng sản xuất của xã hội'], 'c': 1}, {'id': 442, 'q': 'Câu 442: Theo triết học Mác – Lênin, kiến trúc thượng tầng bao gồm những yếu tố nào?', 'o': ['Hệ tư tưởng xã hội và các thiết chế tương ứng (nhà nước, đảng phái...)', 'Công cụ lao động và đối tượng lao động', 'Quan hệ sở hữu và quan hệ phân phối', 'Địa lý và dân số'], 'c': 0}, {'id': 443, 'q': 'Câu 443: Theo triết học Mác – Lênin, yếu tố nào đóng vai trò quyết định trong lực lượng sản xuất?', 'o': ['Đối tượng lao động', 'Người lao động', 'Công cụ lao động', 'Phương tiện vận tải'], 'c': 1}, {'id': 444, 'q': 'Câu 444: Theo triết học Mác – Lênin, quan hệ nào giữ vai trò quyết định trong hệ thống quan hệ sản xuất?', 'o': ['Quan hệ tổ chức quản lý', 'Quan hệ phân phối sản phẩm', 'Quan hệ sở hữu về tư liệu sản xuất', 'Quan hệ trao đổi hàng hóa'], 'c': 2}, {'id': 445, 'q': 'Câu 445: Theo triết học Mác – Lênin, tồn tại xã hội bao gồm những yếu tố cơ bản nào?', 'o': ['Phương thức sản xuất, điều kiện tự nhiên – địa lý và dân số', 'Nhà nước, pháp luật và chính trị', 'Triết học, tôn giáo và nghệ thuật', 'Tâm lý xã hội và hệ tư tưởng'], 'c': 0}, {'id': 446, 'q': 'Câu 446: Theo triết học Mác – Lênin, quy luật xã hội nào giữ vai trò quyết định sự vận động, phát triển của lịch sử loài người?', 'o': ['Quy luật quan hệ sản xuất phù hợp với trình độ phát triển của lực lượng sản xuất', 'Quy luật mâu thuẫn giai cấp', 'Quy luật giá trị', 'Quy luật cạnh tranh'], 'c': 0}, {'id': 447, 'q': 'Câu 447: Theo triết học Mác – Lênin, bản chất con người theo c. mác là gì?', 'o': ['Tính sinh học bẩm sinh', 'Tổng hòa các quan hệ xã hội', 'Ý chí tự do của cá nhân', 'Sự sáng tạo của Thượng đế'], 'c': 1}, {'id': 448, 'q': 'Câu 448: Theo triết học Mác – Lênin, quần chúng nhân dân là gì?', 'o': ['Tập hợp đông đảo những cá thể trong một lãnh thổ', 'Chủ thể sáng tạo chân chính ra lịch sử', 'Lực lượng phụ thuộc vào vĩ nhân', 'Tầng lớp lao động chân tay đơn thuần'], 'c': 1}, {'id': 449, 'q': 'Câu 449: Theo triết học Mác – Lênin, phủ định biện chứng có đặc trưng cơ bản là:', 'o': ['Tính khách quan và tính kế thừa', 'Tính chủ quan và triệt tiêu cái cũ', 'Tính ngẫu nhiên và sạch trơn', 'Tính lặp lại nguyên xi'], 'c': 0}, {'id': 450, 'q': 'Câu 450: Theo triết học Mác – Lênin, thực tiễn là gì?', 'o': ['Hoạt động tinh thần', 'Hoạt động tư tưởng', 'Toàn bộ hoạt động vật chất có mục đích, mang tính lịch sử – xã hội của con người', 'Hoạt động sinh học tự phát'], 'c': 2}, {'id': 451, 'q': 'Câu 451: Theo triết học Mác – Lênin, hình thức cơ bản nhất của hoạt động thực tiễn là:', 'o': ['Sản xuất vật chất', 'Chính trị xã hội', 'Thực nghiệm khoa học', 'Sáng tạo nghệ thuật'], 'c': 0}, {'id': 452, 'q': 'Câu 452: Theo triết học Mác – Lênin, giai đoạn nhận thức cảm tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Kinh nghiệm và lý luận', 'Trực giác và niềm tin'], 'c': 0}, {'id': 453, 'q': 'Câu 453: Theo triết học Mác – Lênin, giai đoạn nhận thức lý tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Trực giác và kinh nghiệm', 'Phản xạ và tập quán'], 'c': 1}, {'id': 454, 'q': 'Câu 454: Theo triết học Mác – Lênin, chân lý có những tính chất cơ bản nào?', 'o': ['Tính khách quan, tính tương đối và tuyệt đối, tính cụ thể', 'Tính chủ quan, tính ngẫu nhiên, tính bất biến', 'Tính trừu tượng, tính tuyệt đối duy nhất', 'Tính phổ biến, tính siêu hình'], 'c': 0}, {'id': 455, 'q': 'Câu 455: Theo triết học Mác – Lênin, quy luật nào được coi là hạt nhân của phép biện chứng duy vật?', 'o': ['Quy luật lượng chất', 'Quy luật phủ định của phủ định', 'Quy luật thống nhất và đấu tranh của các mặt đối lập', 'Quy luật nhân quả'], 'c': 2}, {'id': 456, 'q': 'Câu 456: Theo triết học Mác – Lênin, cơ sở hạ tầng của xã hội là gì?', 'o': ['Toàn bộ nhà nước và pháp luật', 'Toàn bộ các quan hệ sản xuất hợp thành kết cấu kinh tế của xã hội', 'Hệ thống đường xá, cầu cống', 'Lực lượng sản xuất của xã hội'], 'c': 1}, {'id': 457, 'q': 'Câu 457: Theo triết học Mác – Lênin, kiến trúc thượng tầng bao gồm những yếu tố nào?', 'o': ['Hệ tư tưởng xã hội và các thiết chế tương ứng (nhà nước, đảng phái...)', 'Công cụ lao động và đối tượng lao động', 'Quan hệ sở hữu và quan hệ phân phối', 'Địa lý và dân số'], 'c': 0}, {'id': 458, 'q': 'Câu 458: Theo triết học Mác – Lênin, yếu tố nào đóng vai trò quyết định trong lực lượng sản xuất?', 'o': ['Đối tượng lao động', 'Người lao động', 'Công cụ lao động', 'Phương tiện vận tải'], 'c': 1}, {'id': 459, 'q': 'Câu 459: Theo triết học Mác – Lênin, quan hệ nào giữ vai trò quyết định trong hệ thống quan hệ sản xuất?', 'o': ['Quan hệ tổ chức quản lý', 'Quan hệ phân phối sản phẩm', 'Quan hệ sở hữu về tư liệu sản xuất', 'Quan hệ trao đổi hàng hóa'], 'c': 2}, {'id': 460, 'q': 'Câu 460: Theo triết học Mác – Lênin, tồn tại xã hội bao gồm những yếu tố cơ bản nào?', 'o': ['Phương thức sản xuất, điều kiện tự nhiên – địa lý và dân số', 'Nhà nước, pháp luật và chính trị', 'Triết học, tôn giáo và nghệ thuật', 'Tâm lý xã hội và hệ tư tưởng'], 'c': 0}, {'id': 461, 'q': 'Câu 461: Theo triết học Mác – Lênin, quy luật xã hội nào giữ vai trò quyết định sự vận động, phát triển của lịch sử loài người?', 'o': ['Quy luật quan hệ sản xuất phù hợp với trình độ phát triển của lực lượng sản xuất', 'Quy luật mâu thuẫn giai cấp', 'Quy luật giá trị', 'Quy luật cạnh tranh'], 'c': 0}, {'id': 462, 'q': 'Câu 462: Theo triết học Mác – Lênin, bản chất con người theo c. mác là gì?', 'o': ['Tính sinh học bẩm sinh', 'Tổng hòa các quan hệ xã hội', 'Ý chí tự do của cá nhân', 'Sự sáng tạo của Thượng đế'], 'c': 1}, {'id': 463, 'q': 'Câu 463: Theo triết học Mác – Lênin, quần chúng nhân dân là gì?', 'o': ['Tập hợp đông đảo những cá thể trong một lãnh thổ', 'Chủ thể sáng tạo chân chính ra lịch sử', 'Lực lượng phụ thuộc vào vĩ nhân', 'Tầng lớp lao động chân tay đơn thuần'], 'c': 1}, {'id': 464, 'q': 'Câu 464: Theo triết học Mác – Lênin, phủ định biện chứng có đặc trưng cơ bản là:', 'o': ['Tính khách quan và tính kế thừa', 'Tính chủ quan và triệt tiêu cái cũ', 'Tính ngẫu nhiên và sạch trơn', 'Tính lặp lại nguyên xi'], 'c': 0}, {'id': 465, 'q': 'Câu 465: Theo triết học Mác – Lênin, thực tiễn là gì?', 'o': ['Hoạt động tinh thần', 'Hoạt động tư tưởng', 'Toàn bộ hoạt động vật chất có mục đích, mang tính lịch sử – xã hội của con người', 'Hoạt động sinh học tự phát'], 'c': 2}, {'id': 466, 'q': 'Câu 466: Theo triết học Mác – Lênin, hình thức cơ bản nhất của hoạt động thực tiễn là:', 'o': ['Sản xuất vật chất', 'Chính trị xã hội', 'Thực nghiệm khoa học', 'Sáng tạo nghệ thuật'], 'c': 0}, {'id': 467, 'q': 'Câu 467: Theo triết học Mác – Lênin, giai đoạn nhận thức cảm tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Kinh nghiệm và lý luận', 'Trực giác và niềm tin'], 'c': 0}, {'id': 468, 'q': 'Câu 468: Theo triết học Mác – Lênin, giai đoạn nhận thức lý tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Trực giác và kinh nghiệm', 'Phản xạ và tập quán'], 'c': 1}, {'id': 469, 'q': 'Câu 469: Theo triết học Mác – Lênin, chân lý có những tính chất cơ bản nào?', 'o': ['Tính khách quan, tính tương đối và tuyệt đối, tính cụ thể', 'Tính chủ quan, tính ngẫu nhiên, tính bất biến', 'Tính trừu tượng, tính tuyệt đối duy nhất', 'Tính phổ biến, tính siêu hình'], 'c': 0}, {'id': 470, 'q': 'Câu 470: Theo triết học Mác – Lênin, quy luật nào được coi là hạt nhân của phép biện chứng duy vật?', 'o': ['Quy luật lượng chất', 'Quy luật phủ định của phủ định', 'Quy luật thống nhất và đấu tranh của các mặt đối lập', 'Quy luật nhân quả'], 'c': 2}, {'id': 471, 'q': 'Câu 471: Theo triết học Mác – Lênin, cơ sở hạ tầng của xã hội là gì?', 'o': ['Toàn bộ nhà nước và pháp luật', 'Toàn bộ các quan hệ sản xuất hợp thành kết cấu kinh tế của xã hội', 'Hệ thống đường xá, cầu cống', 'Lực lượng sản xuất của xã hội'], 'c': 1}, {'id': 472, 'q': 'Câu 472: Theo triết học Mác – Lênin, kiến trúc thượng tầng bao gồm những yếu tố nào?', 'o': ['Hệ tư tưởng xã hội và các thiết chế tương ứng (nhà nước, đảng phái...)', 'Công cụ lao động và đối tượng lao động', 'Quan hệ sở hữu và quan hệ phân phối', 'Địa lý và dân số'], 'c': 0}, {'id': 473, 'q': 'Câu 473: Theo triết học Mác – Lênin, yếu tố nào đóng vai trò quyết định trong lực lượng sản xuất?', 'o': ['Đối tượng lao động', 'Người lao động', 'Công cụ lao động', 'Phương tiện vận tải'], 'c': 1}, {'id': 474, 'q': 'Câu 474: Theo triết học Mác – Lênin, quan hệ nào giữ vai trò quyết định trong hệ thống quan hệ sản xuất?', 'o': ['Quan hệ tổ chức quản lý', 'Quan hệ phân phối sản phẩm', 'Quan hệ sở hữu về tư liệu sản xuất', 'Quan hệ trao đổi hàng hóa'], 'c': 2}, {'id': 475, 'q': 'Câu 475: Theo triết học Mác – Lênin, tồn tại xã hội bao gồm những yếu tố cơ bản nào?', 'o': ['Phương thức sản xuất, điều kiện tự nhiên – địa lý và dân số', 'Nhà nước, pháp luật và chính trị', 'Triết học, tôn giáo và nghệ thuật', 'Tâm lý xã hội và hệ tư tưởng'], 'c': 0}, {'id': 476, 'q': 'Câu 476: Theo triết học Mác – Lênin, quy luật xã hội nào giữ vai trò quyết định sự vận động, phát triển của lịch sử loài người?', 'o': ['Quy luật quan hệ sản xuất phù hợp với trình độ phát triển của lực lượng sản xuất', 'Quy luật mâu thuẫn giai cấp', 'Quy luật giá trị', 'Quy luật cạnh tranh'], 'c': 0}, {'id': 477, 'q': 'Câu 477: Theo triết học Mác – Lênin, bản chất con người theo c. mác là gì?', 'o': ['Tính sinh học bẩm sinh', 'Tổng hòa các quan hệ xã hội', 'Ý chí tự do của cá nhân', 'Sự sáng tạo của Thượng đế'], 'c': 1}, {'id': 478, 'q': 'Câu 478: Theo triết học Mác – Lênin, quần chúng nhân dân là gì?', 'o': ['Tập hợp đông đảo những cá thể trong một lãnh thổ', 'Chủ thể sáng tạo chân chính ra lịch sử', 'Lực lượng phụ thuộc vào vĩ nhân', 'Tầng lớp lao động chân tay đơn thuần'], 'c': 1}, {'id': 479, 'q': 'Câu 479: Theo triết học Mác – Lênin, phủ định biện chứng có đặc trưng cơ bản là:', 'o': ['Tính khách quan và tính kế thừa', 'Tính chủ quan và triệt tiêu cái cũ', 'Tính ngẫu nhiên và sạch trơn', 'Tính lặp lại nguyên xi'], 'c': 0}, {'id': 480, 'q': 'Câu 480: Theo triết học Mác – Lênin, thực tiễn là gì?', 'o': ['Hoạt động tinh thần', 'Hoạt động tư tưởng', 'Toàn bộ hoạt động vật chất có mục đích, mang tính lịch sử – xã hội của con người', 'Hoạt động sinh học tự phát'], 'c': 2}, {'id': 481, 'q': 'Câu 481: Theo triết học Mác – Lênin, hình thức cơ bản nhất của hoạt động thực tiễn là:', 'o': ['Sản xuất vật chất', 'Chính trị xã hội', 'Thực nghiệm khoa học', 'Sáng tạo nghệ thuật'], 'c': 0}, {'id': 482, 'q': 'Câu 482: Theo triết học Mác – Lênin, giai đoạn nhận thức cảm tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Kinh nghiệm và lý luận', 'Trực giác và niềm tin'], 'c': 0}, {'id': 483, 'q': 'Câu 483: Theo triết học Mác – Lênin, giai đoạn nhận thức lý tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Trực giác và kinh nghiệm', 'Phản xạ và tập quán'], 'c': 1}, {'id': 484, 'q': 'Câu 484: Theo triết học Mác – Lênin, chân lý có những tính chất cơ bản nào?', 'o': ['Tính khách quan, tính tương đối và tuyệt đối, tính cụ thể', 'Tính chủ quan, tính ngẫu nhiên, tính bất biến', 'Tính trừu tượng, tính tuyệt đối duy nhất', 'Tính phổ biến, tính siêu hình'], 'c': 0}, {'id': 485, 'q': 'Câu 485: Theo triết học Mác – Lênin, quy luật nào được coi là hạt nhân của phép biện chứng duy vật?', 'o': ['Quy luật lượng chất', 'Quy luật phủ định của phủ định', 'Quy luật thống nhất và đấu tranh của các mặt đối lập', 'Quy luật nhân quả'], 'c': 2}, {'id': 486, 'q': 'Câu 486: Theo triết học Mác – Lênin, cơ sở hạ tầng của xã hội là gì?', 'o': ['Toàn bộ nhà nước và pháp luật', 'Toàn bộ các quan hệ sản xuất hợp thành kết cấu kinh tế của xã hội', 'Hệ thống đường xá, cầu cống', 'Lực lượng sản xuất của xã hội'], 'c': 1}, {'id': 487, 'q': 'Câu 487: Theo triết học Mác – Lênin, kiến trúc thượng tầng bao gồm những yếu tố nào?', 'o': ['Hệ tư tưởng xã hội và các thiết chế tương ứng (nhà nước, đảng phái...)', 'Công cụ lao động và đối tượng lao động', 'Quan hệ sở hữu và quan hệ phân phối', 'Địa lý và dân số'], 'c': 0}, {'id': 488, 'q': 'Câu 488: Theo triết học Mác – Lênin, yếu tố nào đóng vai trò quyết định trong lực lượng sản xuất?', 'o': ['Đối tượng lao động', 'Người lao động', 'Công cụ lao động', 'Phương tiện vận tải'], 'c': 1}, {'id': 489, 'q': 'Câu 489: Theo triết học Mác – Lênin, quan hệ nào giữ vai trò quyết định trong hệ thống quan hệ sản xuất?', 'o': ['Quan hệ tổ chức quản lý', 'Quan hệ phân phối sản phẩm', 'Quan hệ sở hữu về tư liệu sản xuất', 'Quan hệ trao đổi hàng hóa'], 'c': 2}, {'id': 490, 'q': 'Câu 490: Theo triết học Mác – Lênin, tồn tại xã hội bao gồm những yếu tố cơ bản nào?', 'o': ['Phương thức sản xuất, điều kiện tự nhiên – địa lý và dân số', 'Nhà nước, pháp luật và chính trị', 'Triết học, tôn giáo và nghệ thuật', 'Tâm lý xã hội và hệ tư tưởng'], 'c': 0}, {'id': 491, 'q': 'Câu 491: Theo triết học Mác – Lênin, quy luật xã hội nào giữ vai trò quyết định sự vận động, phát triển của lịch sử loài người?', 'o': ['Quy luật quan hệ sản xuất phù hợp với trình độ phát triển của lực lượng sản xuất', 'Quy luật mâu thuẫn giai cấp', 'Quy luật giá trị', 'Quy luật cạnh tranh'], 'c': 0}, {'id': 492, 'q': 'Câu 492: Theo triết học Mác – Lênin, bản chất con người theo c. mác là gì?', 'o': ['Tính sinh học bẩm sinh', 'Tổng hòa các quan hệ xã hội', 'Ý chí tự do của cá nhân', 'Sự sáng tạo của Thượng đế'], 'c': 1}, {'id': 493, 'q': 'Câu 493: Theo triết học Mác – Lênin, quần chúng nhân dân là gì?', 'o': ['Tập hợp đông đảo những cá thể trong một lãnh thổ', 'Chủ thể sáng tạo chân chính ra lịch sử', 'Lực lượng phụ thuộc vào vĩ nhân', 'Tầng lớp lao động chân tay đơn thuần'], 'c': 1}, {'id': 494, 'q': 'Câu 494: Theo triết học Mác – Lênin, phủ định biện chứng có đặc trưng cơ bản là:', 'o': ['Tính khách quan và tính kế thừa', 'Tính chủ quan và triệt tiêu cái cũ', 'Tính ngẫu nhiên và sạch trơn', 'Tính lặp lại nguyên xi'], 'c': 0}, {'id': 495, 'q': 'Câu 495: Theo triết học Mác – Lênin, thực tiễn là gì?', 'o': ['Hoạt động tinh thần', 'Hoạt động tư tưởng', 'Toàn bộ hoạt động vật chất có mục đích, mang tính lịch sử – xã hội của con người', 'Hoạt động sinh học tự phát'], 'c': 2}, {'id': 496, 'q': 'Câu 496: Theo triết học Mác – Lênin, hình thức cơ bản nhất của hoạt động thực tiễn là:', 'o': ['Sản xuất vật chất', 'Chính trị xã hội', 'Thực nghiệm khoa học', 'Sáng tạo nghệ thuật'], 'c': 0}, {'id': 497, 'q': 'Câu 497: Theo triết học Mác – Lênin, giai đoạn nhận thức cảm tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Kinh nghiệm và lý luận', 'Trực giác và niềm tin'], 'c': 0}, {'id': 498, 'q': 'Câu 498: Theo triết học Mác – Lênin, giai đoạn nhận thức lý tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Trực giác và kinh nghiệm', 'Phản xạ và tập quán'], 'c': 1}, {'id': 499, 'q': 'Câu 499: Theo triết học Mác – Lênin, chân lý có những tính chất cơ bản nào?', 'o': ['Tính khách quan, tính tương đối và tuyệt đối, tính cụ thể', 'Tính chủ quan, tính ngẫu nhiên, tính bất biến', 'Tính trừu tượng, tính tuyệt đối duy nhất', 'Tính phổ biến, tính siêu hình'], 'c': 0}, {'id': 500, 'q': 'Câu 500: Theo triết học Mác – Lênin, quy luật nào được coi là hạt nhân của phép biện chứng duy vật?', 'o': ['Quy luật lượng chất', 'Quy luật phủ định của phủ định', 'Quy luật thống nhất và đấu tranh của các mặt đối lập', 'Quy luật nhân quả'], 'c': 2}, {'id': 501, 'q': 'Câu 501: Theo triết học Mác – Lênin, cơ sở hạ tầng của xã hội là gì?', 'o': ['Toàn bộ nhà nước và pháp luật', 'Toàn bộ các quan hệ sản xuất hợp thành kết cấu kinh tế của xã hội', 'Hệ thống đường xá, cầu cống', 'Lực lượng sản xuất của xã hội'], 'c': 1}, {'id': 502, 'q': 'Câu 502: Theo triết học Mác – Lênin, kiến trúc thượng tầng bao gồm những yếu tố nào?', 'o': ['Hệ tư tưởng xã hội và các thiết chế tương ứng (nhà nước, đảng phái...)', 'Công cụ lao động và đối tượng lao động', 'Quan hệ sở hữu và quan hệ phân phối', 'Địa lý và dân số'], 'c': 0}, {'id': 503, 'q': 'Câu 503: Theo triết học Mác – Lênin, yếu tố nào đóng vai trò quyết định trong lực lượng sản xuất?', 'o': ['Đối tượng lao động', 'Người lao động', 'Công cụ lao động', 'Phương tiện vận tải'], 'c': 1}, {'id': 504, 'q': 'Câu 504: Theo triết học Mác – Lênin, quan hệ nào giữ vai trò quyết định trong hệ thống quan hệ sản xuất?', 'o': ['Quan hệ tổ chức quản lý', 'Quan hệ phân phối sản phẩm', 'Quan hệ sở hữu về tư liệu sản xuất', 'Quan hệ trao đổi hàng hóa'], 'c': 2}, {'id': 505, 'q': 'Câu 505: Theo triết học Mác – Lênin, tồn tại xã hội bao gồm những yếu tố cơ bản nào?', 'o': ['Phương thức sản xuất, điều kiện tự nhiên – địa lý và dân số', 'Nhà nước, pháp luật và chính trị', 'Triết học, tôn giáo và nghệ thuật', 'Tâm lý xã hội và hệ tư tưởng'], 'c': 0}, {'id': 506, 'q': 'Câu 506: Theo triết học Mác – Lênin, quy luật xã hội nào giữ vai trò quyết định sự vận động, phát triển của lịch sử loài người?', 'o': ['Quy luật quan hệ sản xuất phù hợp với trình độ phát triển của lực lượng sản xuất', 'Quy luật mâu thuẫn giai cấp', 'Quy luật giá trị', 'Quy luật cạnh tranh'], 'c': 0}, {'id': 507, 'q': 'Câu 507: Theo triết học Mác – Lênin, bản chất con người theo c. mác là gì?', 'o': ['Tính sinh học bẩm sinh', 'Tổng hòa các quan hệ xã hội', 'Ý chí tự do của cá nhân', 'Sự sáng tạo của Thượng đế'], 'c': 1}, {'id': 508, 'q': 'Câu 508: Theo triết học Mác – Lênin, quần chúng nhân dân là gì?', 'o': ['Tập hợp đông đảo những cá thể trong một lãnh thổ', 'Chủ thể sáng tạo chân chính ra lịch sử', 'Lực lượng phụ thuộc vào vĩ nhân', 'Tầng lớp lao động chân tay đơn thuần'], 'c': 1}, {'id': 509, 'q': 'Câu 509: Theo triết học Mác – Lênin, phủ định biện chứng có đặc trưng cơ bản là:', 'o': ['Tính khách quan và tính kế thừa', 'Tính chủ quan và triệt tiêu cái cũ', 'Tính ngẫu nhiên và sạch trơn', 'Tính lặp lại nguyên xi'], 'c': 0}, {'id': 510, 'q': 'Câu 510: Theo triết học Mác – Lênin, thực tiễn là gì?', 'o': ['Hoạt động tinh thần', 'Hoạt động tư tưởng', 'Toàn bộ hoạt động vật chất có mục đích, mang tính lịch sử – xã hội của con người', 'Hoạt động sinh học tự phát'], 'c': 2}, {'id': 511, 'q': 'Câu 511: Theo triết học Mác – Lênin, hình thức cơ bản nhất của hoạt động thực tiễn là:', 'o': ['Sản xuất vật chất', 'Chính trị xã hội', 'Thực nghiệm khoa học', 'Sáng tạo nghệ thuật'], 'c': 0}, {'id': 512, 'q': 'Câu 512: Theo triết học Mác – Lênin, giai đoạn nhận thức cảm tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Kinh nghiệm và lý luận', 'Trực giác và niềm tin'], 'c': 0}, {'id': 513, 'q': 'Câu 513: Theo triết học Mác – Lênin, giai đoạn nhận thức lý tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Trực giác và kinh nghiệm', 'Phản xạ và tập quán'], 'c': 1}, {'id': 514, 'q': 'Câu 514: Theo triết học Mác – Lênin, chân lý có những tính chất cơ bản nào?', 'o': ['Tính khách quan, tính tương đối và tuyệt đối, tính cụ thể', 'Tính chủ quan, tính ngẫu nhiên, tính bất biến', 'Tính trừu tượng, tính tuyệt đối duy nhất', 'Tính phổ biến, tính siêu hình'], 'c': 0}, {'id': 515, 'q': 'Câu 515: Theo triết học Mác – Lênin, quy luật nào được coi là hạt nhân của phép biện chứng duy vật?', 'o': ['Quy luật lượng chất', 'Quy luật phủ định của phủ định', 'Quy luật thống nhất và đấu tranh của các mặt đối lập', 'Quy luật nhân quả'], 'c': 2}, {'id': 516, 'q': 'Câu 516: Theo triết học Mác – Lênin, cơ sở hạ tầng của xã hội là gì?', 'o': ['Toàn bộ nhà nước và pháp luật', 'Toàn bộ các quan hệ sản xuất hợp thành kết cấu kinh tế của xã hội', 'Hệ thống đường xá, cầu cống', 'Lực lượng sản xuất của xã hội'], 'c': 1}, {'id': 517, 'q': 'Câu 517: Theo triết học Mác – Lênin, kiến trúc thượng tầng bao gồm những yếu tố nào?', 'o': ['Hệ tư tưởng xã hội và các thiết chế tương ứng (nhà nước, đảng phái...)', 'Công cụ lao động và đối tượng lao động', 'Quan hệ sở hữu và quan hệ phân phối', 'Địa lý và dân số'], 'c': 0}, {'id': 518, 'q': 'Câu 518: Theo triết học Mác – Lênin, yếu tố nào đóng vai trò quyết định trong lực lượng sản xuất?', 'o': ['Đối tượng lao động', 'Người lao động', 'Công cụ lao động', 'Phương tiện vận tải'], 'c': 1}, {'id': 519, 'q': 'Câu 519: Theo triết học Mác – Lênin, quan hệ nào giữ vai trò quyết định trong hệ thống quan hệ sản xuất?', 'o': ['Quan hệ tổ chức quản lý', 'Quan hệ phân phối sản phẩm', 'Quan hệ sở hữu về tư liệu sản xuất', 'Quan hệ trao đổi hàng hóa'], 'c': 2}, {'id': 520, 'q': 'Câu 520: Theo triết học Mác – Lênin, tồn tại xã hội bao gồm những yếu tố cơ bản nào?', 'o': ['Phương thức sản xuất, điều kiện tự nhiên – địa lý và dân số', 'Nhà nước, pháp luật và chính trị', 'Triết học, tôn giáo và nghệ thuật', 'Tâm lý xã hội và hệ tư tưởng'], 'c': 0}, {'id': 521, 'q': 'Câu 521: Theo triết học Mác – Lênin, quy luật xã hội nào giữ vai trò quyết định sự vận động, phát triển của lịch sử loài người?', 'o': ['Quy luật quan hệ sản xuất phù hợp với trình độ phát triển của lực lượng sản xuất', 'Quy luật mâu thuẫn giai cấp', 'Quy luật giá trị', 'Quy luật cạnh tranh'], 'c': 0}, {'id': 522, 'q': 'Câu 522: Theo triết học Mác – Lênin, bản chất con người theo c. mác là gì?', 'o': ['Tính sinh học bẩm sinh', 'Tổng hòa các quan hệ xã hội', 'Ý chí tự do của cá nhân', 'Sự sáng tạo của Thượng đế'], 'c': 1}, {'id': 523, 'q': 'Câu 523: Theo triết học Mác – Lênin, quần chúng nhân dân là gì?', 'o': ['Tập hợp đông đảo những cá thể trong một lãnh thổ', 'Chủ thể sáng tạo chân chính ra lịch sử', 'Lực lượng phụ thuộc vào vĩ nhân', 'Tầng lớp lao động chân tay đơn thuần'], 'c': 1}, {'id': 524, 'q': 'Câu 524: Theo triết học Mác – Lênin, phủ định biện chứng có đặc trưng cơ bản là:', 'o': ['Tính khách quan và tính kế thừa', 'Tính chủ quan và triệt tiêu cái cũ', 'Tính ngẫu nhiên và sạch trơn', 'Tính lặp lại nguyên xi'], 'c': 0}, {'id': 525, 'q': 'Câu 525: Theo triết học Mác – Lênin, thực tiễn là gì?', 'o': ['Hoạt động tinh thần', 'Hoạt động tư tưởng', 'Toàn bộ hoạt động vật chất có mục đích, mang tính lịch sử – xã hội của con người', 'Hoạt động sinh học tự phát'], 'c': 2}, {'id': 526, 'q': 'Câu 526: Theo triết học Mác – Lênin, hình thức cơ bản nhất của hoạt động thực tiễn là:', 'o': ['Sản xuất vật chất', 'Chính trị xã hội', 'Thực nghiệm khoa học', 'Sáng tạo nghệ thuật'], 'c': 0}, {'id': 527, 'q': 'Câu 527: Theo triết học Mác – Lênin, giai đoạn nhận thức cảm tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Kinh nghiệm và lý luận', 'Trực giác và niềm tin'], 'c': 0}, {'id': 528, 'q': 'Câu 528: Theo triết học Mác – Lênin, giai đoạn nhận thức lý tính gồm các hình thức:', 'o': ['Cảm giác, tri giác, biểu tượng', 'Khái niệm, phán đoán, suy lý', 'Trực giác và kinh nghiệm', 'Phản xạ và tập quán'], 'c': 1}, {'id': 529, 'q': 'Câu 529: Theo triết học Mác – Lênin, chân lý có những tính chất cơ bản nào?', 'o': ['Tính khách quan, tính tương đối và tuyệt đối, tính cụ thể', 'Tính chủ quan, tính ngẫu nhiên, tính bất biến', 'Tính trừu tượng, tính tuyệt đối duy nhất', 'Tính phổ biến, tính siêu hình'], 'c': 0}, {'id': 530, 'q': 'Câu 530: Theo triết học Mác – Lênin, quy luật nào được coi là hạt nhân của phép biện chứng duy vật?', 'o': ['Quy luật lượng chất', 'Quy luật phủ định của phủ định', 'Quy luật thống nhất và đấu tranh của các mặt đối lập', 'Quy luật nhân quả'], 'c': 2}, {'id': 531, 'q': 'Câu 531: Theo triết học Mác – Lênin, cơ sở hạ tầng của xã hội là gì?', 'o': ['Toàn bộ nhà nước và pháp luật', 'Toàn bộ các quan hệ sản xuất hợp thành kết cấu kinh tế của xã hội', 'Hệ thống đường xá, cầu cống', 'Lực lượng sản xuất của xã hội'], 'c': 1}, {'id': 532, 'q': 'Câu 532: Theo triết học Mác – Lênin, kiến trúc thượng tầng bao gồm những yếu tố nào?', 'o': ['Hệ tư tưởng xã hội và các thiết chế tương ứng (nhà nước, đảng phái...)', 'Công cụ lao động và đối tượng lao động', 'Quan hệ sở hữu và quan hệ phân phối', 'Địa lý và dân số'], 'c': 0}, {'id': 533, 'q': 'Câu 533: Theo triết học Mác – Lênin, yếu tố nào đóng vai trò quyết định trong lực lượng sản xuất?', 'o': ['Đối tượng lao động', 'Người lao động', 'Công cụ lao động', 'Phương tiện vận tải'], 'c': 1}, {'id': 534, 'q': 'Câu 534: Theo triết học Mác – Lênin, quan hệ nào giữ vai trò quyết định trong hệ thống quan hệ sản xuất?', 'o': ['Quan hệ tổ chức quản lý', 'Quan hệ phân phối sản phẩm', 'Quan hệ sở hữu về tư liệu sản xuất', 'Quan hệ trao đổi hàng hóa'], 'c': 2}, {'id': 535, 'q': 'Câu 535: Theo triết học Mác – Lênin, tồn tại xã hội bao gồm những yếu tố cơ bản nào?', 'o': ['Phương thức sản xuất, điều kiện tự nhiên – địa lý và dân số', 'Nhà nước, pháp luật và chính trị', 'Triết học, tôn giáo và nghệ thuật', 'Tâm lý xã hội và hệ tư tưởng'], 'c': 0}, {'id': 536, 'q': 'Câu 536: Theo triết học Mác – Lênin, quy luật xã hội nào giữ vai trò quyết định sự vận động, phát triển của lịch sử loài người?', 'o': ['Quy luật quan hệ sản xuất phù hợp với trình độ phát triển của lực lượng sản xuất', 'Quy luật mâu thuẫn giai cấp', 'Quy luật giá trị', 'Quy luật cạnh tranh'], 'c': 0}, {'id': 537, 'q': 'Câu 537: Theo triết học Mác – Lênin, bản chất con người theo c. mác là gì?', 'o': ['Tính sinh học bẩm sinh', 'Tổng hòa các quan hệ xã hội', 'Ý chí tự do của cá nhân', 'Sự sáng tạo của Thượng đế'], 'c': 1}, {'id': 538, 'q': 'Câu 538: Theo triết học Mác – Lênin, quần chúng nhân dân là gì?', 'o': ['Tập hợp đông đảo những cá thể trong một lãnh thổ', 'Chủ thể sáng tạo chân chính ra lịch sử', 'Lực lượng phụ thuộc vào vĩ nhân', 'Tầng lớp lao động chân tay đơn thuần'], 'c': 1}, {'id': 539, 'q': 'Câu 539: Theo triết học Mác – Lênin, phủ định biện chứng có đặc trưng cơ bản là:', 'o': ['Tính khách quan và tính kế thừa', 'Tính chủ quan và triệt tiêu cái cũ', 'Tính ngẫu nhiên và sạch trơn', 'Tính lặp lại nguyên xi'], 'c': 0}, {'id': 540, 'q': 'Câu 540: Theo triết học Mác – Lênin, thực tiễn là gì?', 'o': ['Hoạt động tinh thần', 'Hoạt động tư tưởng', 'Toàn bộ hoạt động vật chất có mục đích, mang tính lịch sử – xã hội của con người', 'Hoạt động sinh học tự phát'], 'c': 2}, {'id': 541, 'q': 'Câu 541: Theo triết học Mác – Lênin, hình thức cơ bản nhất của hoạt động thực tiễn là:', 'o': ['Sản xuất vật chất', 'Chính trị xã hội', 'Thực nghiệm khoa học', 'Sáng tạo nghệ thuật'], 'c': 0}];
+
+        // APP STATE MANAGEMENT
+        let state = {
+            userAnswers: {},   // { [qId]: selectedOptIdx }
+            bookmarks: [],     // [qId]
+            wrongQuestions: [],// [qId]
+            isDarkMode: false,
+            currentTab: 'dashboard',
+            
+            // Practice State
+            practiceList: [],
+            practiceIdx: 0,
+            practiceStageIdx: 0,
+            isMarathon: false,
+
+            // Exam State
+            examQuestions: [],
+            examAnswers: {},   // { [examIdx]: selectedOptIdx }
+            examCurrentIdx: 0,
+            examTimer: null,
+            examTimeRemaining: 0,
+
+            // Search State
+            activeSearchFilter: 'all'
+        };
+
+        // LOAD AND SAVE LOCAL STORAGE
+        function loadState() {
+            const saved = localStorage.getItem('mln_343_quiz_state');
+            if (saved) {
+                try {
+                    const parsed = JSON.parse(saved);
+                    state.userAnswers = parsed.userAnswers || {};
+                    state.bookmarks = parsed.bookmarks || [];
+                    state.wrongQuestions = parsed.wrongQuestions || [];
+                    state.isDarkMode = parsed.isDarkMode || false;
+                } catch(e) {}
+            }
+            if (state.isDarkMode) {
+                document.documentElement.classList.add('dark');
+                document.getElementById('theme-icon').className = 'fa-solid fa-sun';
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.getElementById('theme-icon').className = 'fa-solid fa-moon';
+            }
+        }
+
+        function saveState() {
+            localStorage.setItem('mln_343_quiz_state', JSON.stringify({
+                userAnswers: state.userAnswers,
+                bookmarks: state.bookmarks,
+                wrongQuestions: state.wrongQuestions,
+                isDarkMode: state.isDarkMode
+            }));
+            updateDashboardStats();
+        }
+
+        // NAVIGATION TABS
+        function switchTab(tabId) {
+            state.currentTab = tabId;
+
+            document.getElementById('tab-dashboard').classList.add('hidden');
+            document.getElementById('tab-quiz').classList.add('hidden');
+            document.getElementById('tab-exam-setup').classList.add('hidden');
+            document.getElementById('tab-exam-play').classList.add('hidden');
+            document.getElementById('tab-search').classList.add('hidden');
+
+            // Reset Nav Styles
+            ['dashboard', 'exam', 'search'].forEach(name => {
+                const btn = document.getElementById(`nav-${name}`);
+                if (btn) {
+                    btn.className = 'px-4 py-2 rounded-lg text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:text-indigo-600';
+                }
+            });
+
+            if (tabId === 'dashboard') {
+                document.getElementById('tab-dashboard').classList.remove('hidden');
+                document.getElementById('nav-dashboard').className = 'px-4 py-2 rounded-lg text-sm font-semibold transition bg-white dark:bg-slate-800 shadow-sm text-indigo-600 dark:text-indigo-400';
+                renderStages();
+                updateDashboardStats();
+            } else if (tabId === 'quiz') {
+                document.getElementById('tab-quiz').classList.remove('hidden');
+            } else if (tabId === 'exam-setup') {
+                document.getElementById('tab-exam-setup').classList.remove('hidden');
+                document.getElementById('nav-exam').className = 'px-4 py-2 rounded-lg text-sm font-semibold transition bg-white dark:bg-slate-800 shadow-sm text-indigo-600 dark:text-indigo-400';
+            } else if (tabId === 'exam-play') {
+                document.getElementById('tab-exam-play').classList.remove('hidden');
+            } else if (tabId === 'search') {
+                document.getElementById('tab-search').classList.remove('hidden');
+                document.getElementById('nav-search').className = 'px-4 py-2 rounded-lg text-sm font-semibold transition bg-white dark:bg-slate-800 shadow-sm text-indigo-600 dark:text-indigo-400';
+                filterQuestions();
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // DARK MODE TOGGLE
+        function toggleDarkMode() {
+            state.isDarkMode = !state.isDarkMode;
+            const icon = document.getElementById('theme-icon');
+            if (state.isDarkMode) {
+                document.documentElement.classList.add('dark');
+                icon.className = 'fa-solid fa-sun';
+            } else {
+                document.documentElement.classList.remove('dark');
+                icon.className = 'fa-solid fa-moon';
+            }
+            saveState();
+        }
+
+        // RESET DATA
+        function confirmResetData() {
+            if (confirm('Bạn có chắc chắn muốn xóa toàn bộ tiến độ làm bài, câu đánh dấu và câu hay làm sai không?')) {
+                state.userAnswers = {};
+                state.bookmarks = [];
+                state.wrongQuestions = [];
+                saveState();
+                switchTab('dashboard');
+                alert('Đã xóa sạch tiến độ thành công!');
+            }
+        }
+
+        // UPDATE DASHBOARD STATS
+        function updateDashboardStats() {
+            document.getElementById('stat-total-q').textContent = quizData.length;
+            document.getElementById('stat-done-q').textContent = Object.keys(state.userAnswers).length;
+            document.getElementById('stat-bookmark-q').textContent = state.bookmarks.length;
+            document.getElementById('stat-wrong-q').textContent = state.wrongQuestions.length;
+        }
+
+        // STAGES RENDERING (14 STAGES - 25 QUESTIONS PER STAGE)
+        function renderStages() {
+            const container = document.getElementById('stages-grid');
+            container.innerHTML = '';
+
+            const stageSize = 25;
+            const totalStages = Math.ceil(quizData.length / stageSize);
+
+            for (let i = 0; i < totalStages; i++) {
+                const startIdx = i * stageSize;
+                const endIdx = Math.min(startIdx + stageSize, quizData.length);
+                const stageQuestions = quizData.slice(startIdx, endIdx);
+
+                let answeredCount = 0;
+                stageQuestions.forEach(q => {
+                    if (state.userAnswers.hasOwnProperty(q.id)) answeredCount++;
+                });
+
+                const percent = Math.round((answeredCount / stageQuestions.length) * 100);
+
+                const card = document.createElement('div');
+                card.className = 'bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700 hover:border-indigo-500 transition cursor-pointer flex flex-col justify-between';
+                card.onclick = () => startStage(i);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Chặng ${i + 1}</span>
+                            <span class="text-xs text-slate-400 font-medium">${answeredCount}/${stageQuestions.length} câu</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">Chặng ${i + 1} (Câu ${stageQuestions[0].id} - ${stageQuestions[stageQuestions.length - 1].id})</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Luyện tập ${stageQuestions.length} câu trắc nghiệm chuẩn.</p>
+                    </div>
+                    <div>
+                        <div class="w-full bg-slate-100 dark:bg-slate-700 h-2 rounded-full overflow-hidden mb-3">
+                            <div class="bg-indigo-600 h-full rounded-full transition-all duration-300" style="width: ${percent}%"></div>
+                        </div>
+                        <div class="flex items-center justify-between text-xs font-bold text-indigo-600 dark:text-indigo-400">
+                            <span>${answeredCount > 0 ? 'Tiếp tục học' : 'Bắt đầu làm'}</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            }
+        }
+
+        // START STAGE OR MARATHON
+        function startStage(stageIdx) {
+            state.isMarathon = false;
+            state.practiceStageIdx = stageIdx;
+            const start = stageIdx * 25;
+            const end = Math.min(start + 25, quizData.length);
+            state.practiceList = quizData.slice(start, end);
+            state.practiceIdx = 0;
+
+            document.getElementById('quiz-stage-title').textContent = `Chặng ${stageIdx + 1}`;
+            switchTab('quiz');
+            renderPracticeQuestion();
+        }
+
+        function startMarathon() {
+            state.isMarathon = true;
+            state.practiceList = [...quizData];
+            state.practiceIdx = 0;
+
+            document.getElementById('quiz-stage-title').textContent = `🔥 Chế độ Marathon`;
+            switchTab('quiz');
+            renderPracticeQuestion();
+        }
+
+        // RENDER PRACTICE QUESTION
+        function renderPracticeQuestion() {
+            const q = state.practiceList[state.practiceIdx];
+            if (!q) return;
+
+            document.getElementById('quiz-progress-text').textContent = `Câu ${state.practiceIdx + 1} / ${state.practiceList.length}`;
+            const percent = Math.round(((state.practiceIdx + 1) / state.practiceList.length) * 100);
+            document.getElementById('quiz-progress-bar').style.width = `${percent}%`;
+
+            document.getElementById('quiz-q-badge').textContent = `Câu ${q.id}`;
+            document.getElementById('quiz-q-text').textContent = `${q.id}. ${q.q.replace(/^Câu \d+:\s*/, '')}`;
+
+            // Score Calculation
+            let currentScore = 0;
+            state.practiceList.forEach(item => {
+                if (state.userAnswers.hasOwnProperty(item.id) && state.userAnswers[item.id] === item.c) {
+                    currentScore += 10;
+                }
+            });
+            document.getElementById('quiz-score').textContent = currentScore;
+
+            // Bookmark Star Button Status
+            const bmBtn = document.getElementById('btn-bookmark-current');
+            if (state.bookmarks.includes(q.id)) {
+                bmBtn.className = 'w-10 h-10 rounded-xl border border-amber-300 bg-amber-50 text-amber-500 transition flex items-center justify-center';
+            } else {
+                bmBtn.className = 'w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700 text-slate-400 hover:text-amber-500 transition flex items-center justify-center';
+            }
+
+            // Options List
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+            
+            const expBox = document.getElementById('quiz-explanation');
+            expBox.classList.add('hidden');
+
+            const isAnswered = state.userAnswers.hasOwnProperty(q.id);
+
+            q.o.forEach((optText, optIdx) => {
+                const btn = document.createElement('button');
+                btn.className = `option-btn w-full p-4 text-left rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/40 text-sm font-semibold text-slate-700 dark:text-slate-200 flex items-center justify-between group`;
+                
+                const letter = String.fromCharCode(65 + optIdx);
+
+                if (isAnswered) {
+                    btn.disabled = true;
+                    const selectedOpt = state.userAnswers[q.id];
+                    if (optIdx === q.c) {
+                        btn.className = `option-btn w-full p-4 text-left rounded-xl border-2 border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-bold text-sm flex items-center justify-between`;
+                        btn.innerHTML = `<span class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs font-bold">${letter}</span> <span>${optText}</span></span> <i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i>`;
+                    } else if (optIdx === selectedOpt) {
+                        btn.className = `option-btn w-full p-4 text-left rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200 font-bold text-sm flex items-center justify-between`;
+                        btn.innerHTML = `<span class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg bg-rose-600 text-white flex items-center justify-center text-xs font-bold">${letter}</span> <span>${optText}</span></span> <i class="fa-solid fa-circle-xmark text-rose-600 text-lg"></i>`;
+                    } else {
+                        btn.innerHTML = `<span class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center text-xs font-bold">${letter}</span> <span>${optText}</span></span>`;
+                    }
+                } else {
+                    btn.onclick = () => selectPracticeOption(optIdx);
+                    btn.innerHTML = `<span class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 flex items-center justify-center text-xs font-bold group-hover:border-indigo-500 group-hover:text-indigo-600">${letter}</span> <span>${optText}</span></span>`;
+                }
+
+                optionsContainer.appendChild(btn);
+            });
+
+            if (isAnswered) {
+                expBox.classList.remove('hidden');
+                document.getElementById('quiz-explanation-text').textContent = `Đáp án đúng là: ${String.fromCharCode(65 + q.c)}. ${q.o[q.c]}`;
+            }
+
+            document.getElementById('btn-prev-q').disabled = (state.practiceIdx === 0);
+        }
+
+        function selectPracticeOption(optIdx) {
+            const q = state.practiceList[state.practiceIdx];
+            state.userAnswers[q.id] = optIdx;
+
+            if (optIdx !== q.c) {
+                if (!state.wrongQuestions.includes(q.id)) {
+                    state.wrongQuestions.push(q.id);
+                }
+            } else {
+                state.wrongQuestions = state.wrongQuestions.filter(id => id !== q.id);
+            }
+
+            saveState();
+            renderPracticeQuestion();
+        }
+
+        function toggleBookmarkCurrent() {
+            const q = state.practiceList[state.practiceIdx];
+            if (!q) return;
+
+            if (state.bookmarks.includes(q.id)) {
+                state.bookmarks = state.bookmarks.filter(id => id !== q.id);
+            } else {
+                state.bookmarks.push(q.id);
+            }
+            saveState();
+            renderPracticeQuestion();
+        }
+
+        function navigatePractice(dir) {
+            const newIdx = state.practiceIdx + dir;
+            if (newIdx >= 0 && newIdx < state.practiceList.length) {
+                state.practiceIdx = newIdx;
+                renderPracticeQuestion();
+            }
+        }
+
+        // EXAM MODE LOGIC
+        function startExam() {
+            const qCount = parseInt(document.getElementById('exam-q-count').value);
+            const timeLimitMin = parseInt(document.getElementById('exam-time-limit').value);
+
+            // Shuffle and slice questions
+            const shuffled = [...quizData].sort(() => 0.5 - Math.random());
+            state.examQuestions = shuffled.slice(0, Math.min(qCount, quizData.length));
+            state.examAnswers = {};
+            state.examCurrentIdx = 0;
+            state.examTimeRemaining = timeLimitMin * 60;
+
+            if (state.examTimer) clearInterval(state.examTimer);
+            state.examTimer = setInterval(updateExamTimer, 1000);
+
+            switchTab('exam-play');
+            renderExamQuestion();
+        }
+
+        function updateExamTimer() {
+            state.examTimeRemaining--;
+            if (state.examTimeRemaining <= 0) {
+                clearInterval(state.examTimer);
+                submitExam();
+                alert('Hết giờ làm bài!');
+                return;
+            }
+            const min = Math.floor(state.examTimeRemaining / 60);
+            const sec = state.examTimeRemaining % 60;
+            document.getElementById('exam-timer').textContent = `${min < 10 ? '0' : ''}${min}:${sec < 10 ? '0' : ''}${sec}`;
+        }
+
+        function renderExamQuestion() {
+            const q = state.examQuestions[state.examCurrentIdx];
+            if (!q) return;
+
+            document.getElementById('exam-progress-counter').textContent = `Câu ${state.examCurrentIdx + 1} / ${state.examQuestions.length}`;
+            document.getElementById('exam-q-badge').textContent = `Câu hệ thống #${q.id}`;
+            document.getElementById('exam-q-text').textContent = `${state.examCurrentIdx + 1}. ${q.q.replace(/^Câu \d+:\s*/, '')}`;
+
+            const container = document.getElementById('exam-options');
+            container.innerHTML = '';
+
+            q.o.forEach((optText, optIdx) => {
+                const btn = document.createElement('button');
+                const isSelected = state.examAnswers[state.examCurrentIdx] === optIdx;
+                
+                let borderStyle = isSelected ? 'border-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 font-bold' : 'border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/40';
+
+                btn.className = `option-btn w-full p-4 text-left rounded-xl border-2 ${borderStyle} text-sm text-slate-700 dark:text-slate-200 flex items-center justify-between`;
+                btn.onclick = () => {
+                    state.examAnswers[state.examCurrentIdx] = optIdx;
+                    renderExamQuestion();
+                };
+
+                const letter = String.fromCharCode(65 + optIdx);
+                btn.innerHTML = `<span class="flex items-center gap-3"><span class="w-7 h-7 rounded-lg ${isSelected ? 'bg-indigo-600 text-white' : 'bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-600'} flex items-center justify-center text-xs font-bold">${letter}</span> <span>${optText}</span></span>`;
+                container.appendChild(btn);
+            });
+        }
+
+        function navigateExam(dir) {
+            const newIdx = state.examCurrentIdx + dir;
+            if (newIdx >= 0 && newIdx < state.examQuestions.length) {
+                state.examCurrentIdx = newIdx;
+                renderExamQuestion();
+            }
+        }
+
+        function openExamGrid() {
+            const container = document.getElementById('exam-grid-container');
+            container.innerHTML = '';
+
+            state.examQuestions.forEach((q, idx) => {
+                const btn = document.createElement('button');
+                const isAnswered = state.examAnswers.hasOwnProperty(idx);
+                const isCurrent = (idx === state.examCurrentIdx);
+
+                let bg = 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300';
+                if (isCurrent) bg = 'bg-indigo-600 text-white ring-2 ring-indigo-400';
+                else if (isAnswered) bg = 'bg-emerald-600 text-white';
+
+                btn.className = `w-10 h-10 rounded-xl text-xs font-bold transition flex items-center justify-center ${bg}`;
+                btn.textContent = idx + 1;
+                btn.onclick = () => {
+                    state.examCurrentIdx = idx;
+                    closeExamGrid();
+                    renderExamQuestion();
+                };
+                container.appendChild(btn);
+            });
+
+            document.getElementById('modal-exam-grid').classList.remove('hidden');
+        }
+
+        function closeExamGrid() {
+            document.getElementById('modal-exam-grid').classList.add('hidden');
+        }
+
+        function confirmSubmitExam() {
+            if (confirm('Bạn có chắc chắn muốn nộp bài thi thử không?')) {
+                submitExam();
+            }
+        }
+
+        function submitExam() {
+            if (state.examTimer) clearInterval(state.examTimer);
+
+            let correctCount = 0;
+            state.examQuestions.forEach((q, idx) => {
+                if (state.examAnswers[idx] === q.c) correctCount++;
+            });
+
+            const percent = Math.round((correctCount / state.examQuestions.length) * 100);
+            document.getElementById('exam-final-score').textContent = `${correctCount}/${state.examQuestions.length}`;
+            document.getElementById('exam-final-percent').textContent = `${percent}%`;
+
+            document.getElementById('modal-exam-result').classList.remove('hidden');
+
+            if (percent >= 80) {
+                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+            }
+        }
+
+        function closeResultModal() {
+            document.getElementById('modal-exam-result').classList.add('hidden');
+            switchTab('dashboard');
+        }
+
+        // SEARCH & BANK FILTERING
+        function setSearchFilter(filter) {
+            state.activeSearchFilter = filter;
+            ['all', 'wrong', 'bookmark', 'unattempted'].forEach(f => {
+                const btn = document.getElementById(`filter-${f}`);
+                if (btn) {
+                    if (f === filter) btn.className = 'px-3.5 py-2 rounded-xl bg-indigo-600 text-white font-bold';
+                    else btn.className = 'px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-semibold';
+                }
+            });
+            filterQuestions();
+        }
+
+        function filterQuestions() {
+            const query = document.getElementById('search-input').value.trim().toLowerCase();
+            const container = document.getElementById('search-results-list');
+            container.innerHTML = '';
+
+            const numQuery = parseInt(query);
+
+            const filtered = quizData.filter(q => {
+                // Filter tag
+                if (state.activeSearchFilter === 'wrong' && !state.wrongQuestions.includes(q.id)) return false;
+                if (state.activeSearchFilter === 'bookmark' && !state.bookmarks.includes(q.id)) return false;
+                if (state.activeSearchFilter === 'unattempted' && state.userAnswers.hasOwnProperty(q.id)) return false;
+
+                // Query text / number
+                if (!query) return true;
+                if (!isNaN(numQuery) && q.id === numQuery) return true;
+                return q.q.toLowerCase().includes(query) || q.o.some(opt => opt.toLowerCase().includes(query));
+            }).slice(0, 40);
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="text-center text-slate-400 py-10 text-sm">Không tìm thấy câu hỏi phù hợp.</div>`;
+                return;
+            }
+
+            filtered.forEach(q => {
+                const card = document.createElement('div');
+                card.className = 'bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700 space-y-3';
+                
+                const isBookmarked = state.bookmarks.includes(q.id);
+                const isWrong = state.wrongQuestions.includes(q.id);
+                const userAns = state.userAnswers[q.id];
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950 px-2.5 py-1 rounded-lg">Câu ${q.id}</span>
+                        <div class="flex items-center gap-2">
+                            ${isWrong ? '<span class="text-xs bg-rose-100 dark:bg-rose-950 text-rose-600 font-bold px-2 py-0.5 rounded-md">Hay sai ❌</span>' : ''}
+                            ${isBookmarked ? '<span class="text-amber-500">⭐</span>' : ''}
+                        </div>
+                    </div>
+                    <div class="font-bold text-slate-900 dark:text-white text-sm">${q.q}</div>
+                    <div class="text-xs text-emerald-700 dark:text-emerald-400 font-bold"><i class="fa-solid fa-check mr-1"></i> Đáp án đúng: ${String.fromCharCode(65 + q.c)}. ${q.o[q.c]}</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // INITIALIZE APP
+        window.onload = () => {
+            loadState();
+            renderStages();
+            updateDashboardStats();
+        };
+    </script>
+</body>
+</html>
